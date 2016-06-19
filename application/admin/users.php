@@ -17,8 +17,11 @@ $app->group('/admin/users', function () {
         $email = $_POST['email'];
         $invitor = $_POST['name'];
         $this->mailler->addAddress($email);
+        $this->mailler->isHTML(true);
         $this->mailler->Subject = 'Undangan Akses Manajemen Website PT.STARS Indonesia';
-        $this->mailler->Body = "coba - coba";
+        $this->mailler->Body = $this->view->render($res, 'email/email.html', [
+            'link'=>$this->get('settings')['server']."/".$this->router->pathFor('admin-register', ['email'=>$email]),
+        ]);
         if(!$this->mailler->send()) {
             $result["status"]='failed';
             $result["message"]=$this->mailler->ErrorInfo;
@@ -32,7 +35,6 @@ $app->group('/admin/users', function () {
         if(!isset($this->session->user_id)){
             return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-login'));
         }
-        var_dump($_POST);
         $update = $this->db->prepare("update user set permission='".$_POST['permission']."' where user_id='".$_POST['id']."'");
         if($update->execute()){
             return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-users'));

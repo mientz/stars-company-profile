@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="{{ path_for('home') }}"><!--[if lte IE 6]></base><![endif]-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="public/assets/admin/css/bootstrap.css">
+        <link href="public/assets/admin/css/main.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/admin/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">
+                        <img height="20" alt="Brand" src="public/assets/admin/img/logo.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="section" style="padding-top:80px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 col-login">
+                        <h1 class="text-center">PENDAFTARAN</h1>
+                        <h5 class="text-center">Selamat datang di Aplikasi Manajemen Kartu Nama.</h5>
+                        <h5 class="text-center">Silahkan isi seluruh informasi di bawah ini</h5>
+                        <hr>
+                        <form class="form-horizontal" method="post">
+                            <div class="form-group has-feedback">
+                                <div class="col-sm-2">
+                                    <label for="inputEmail3" class="control-label">Username</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control lvalid exvalid-username" data-min="2" name="username" placeholder="Username" required>
+                                </div>
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <p class="help-block text-{{username.type}}"><small>{{username.message}}</small></p>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="col-sm-2">
+                                    <label for="inputEmail3" class="control-label">Email</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control exvalid-email" name="email" placeholder="Email" value="{{email_data}}" readonly required>
+                                </div>
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <p class="help-block text-{{email.type}}"><small>{{email.message}}</small></p>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="col-sm-2">
+                                    <label for="inputEmail3" class="control-label">Password</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control lvalid exvalid-password" data-min="6" name="password" placeholder="password" required></div>
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <p class="help-block text-{{password.type}}"><small>{{password.message}}</small></p>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="col-sm-2">
+                                    <label for="inputEmail3" class="control-label">Ulang Password</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control exvalid-repassword" data-min="6" name="repassword" placeholder="password" required></div>
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <p class="help-block text-{{repassword.type}}"><small>{{repassword.message}}</small></p>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="col-sm-2">
+                                    <label for="inputEmail3" class="control-label">Nama Lengkap</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="nane" name="name" placeholder="Nama Lengkap" required></div>
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <p class="help-block"><small>Mohon untuk menggunakan nama asli</small></p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <button type="submit" class="btn btn-block btn-primary">Daftar</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-8 text-center">
+                                    <small class="text-muted">Sudah Punya Akun ?</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <a href="{{ path_for('admin-login') }}" class="btn btn-block btn-success">Login</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="public/assets/admin/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/admin/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/admin/js/mustache.min.js"></script>
+        {% verbatim %}
+        <script id="validation" type="x-tmpl-mustache">
+            <p class="help-block text-{{type}}"><small>{{message}}</small></p>
+        </script>
+        {% endverbatim %}
+            <script>
+                $('.lvalid').on('keyup', function(){
+                    var parent = $(this).parent();
+                    var messaging = parent.next();
+                    var value = $(this).val();
+                    var vlength = $(this).val().length;
+                    if(vlength < $(this).data('min') && vlength != 0){
+                        var validation = $('#validation').html();
+                        Mustache.parse(validation);   // optional, speeds up future uses
+                        var rendered = Mustache.render(validation, {type: "danger", message: "Minimal "+$(this).data('min')+" karakter" });
+                        messaging.html(rendered);
+                    }else if(vlength >= $(this).data('min') && vlength != 0){
+                        messaging.html('');
+                    }else{
+                        messaging.html('');
+                    }
+                });
+                $('.exvalid-repassword').on('focusout', function(){
+                    var parent = $(this).parent();
+                    var messaging = parent.next();
+                    var value = $(this).val();
+                    var password = $('.exvalid-password').val();
+                    if(value != password){
+                        var validation = $('#validation').html();
+                        Mustache.parse(validation);   // optional, speeds up future uses
+                        var rendered = Mustache.render(validation, {type: "danger", message: "Password tidak sama !!" });
+                        messaging.html(rendered);
+                    }else{
+                        messaging.html('');
+                    }
+                });
+                $('.exvalid-username').on('focusout',  function(){
+                    var parent = $(this).parent();
+                    var messaging = parent.next();
+                    var value = $(this).val();
+                    var vlength = $(this).val().length;
+                    if(vlength >= $(this).data('min')){
+                        $.getJSON("{{ path_for('admin-register-check-username', {'username': ''}) }}"+value, {}, function(data){
+                            var validation = $('#validation').html();
+                            Mustache.parse(validation);   // optional, speeds up future uses
+                            var rendered = Mustache.render(validation,{type: data.type, message: data.message});
+                            messaging.html(rendered);
+                        });
+                    }
+                });
+            </script>
+            </body>
+        </html>

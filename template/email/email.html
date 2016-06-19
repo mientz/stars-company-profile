@@ -1,0 +1,649 @@
+<!DOCTYPE html "-//w3c//dtd xhtml 1.0 transitional //en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!--[if gte mso 9]><xml>
+     <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+     </o:OfficeDocumentSettings>
+    </xml><![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <title>Template Base</title>
+
+
+
+</head>
+
+<body style="width: 100% !important;min-width: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100% !important;margin: 0;padding: 0;background-color: #FFFFFF">
+    <style id="media-query">
+        /* Client-specific Styles & Reset */
+
+        #outlook a {
+            padding: 0;
+        }
+        /* .ExternalClass applies to Outlook.com (the artist formerly known as Hotmail) */
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+
+        #backgroundTable {
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+            line-height: 100% !important;
+        }
+        /* Buttons */
+
+        .button a {
+            display: inline-block;
+            text-decoration: none;
+            -webkit-text-size-adjust: none;
+            text-align: center;
+        }
+
+        .button a div {
+            text-align: center !important;
+        }
+        /* Outlook First */
+
+        body.outlook p {
+            display: inline !important;
+        }
+        /*  Media Queries */
+
+        @media only screen and (max-width: 500px) {
+            table[class="body"] img {
+                height: auto !important;
+                width: 100% !important;
+            }
+            table[class="body"] img.fullwidth {
+                max-width: 100% !important;
+            }
+            table[class="body"] center {
+                min-width: 0 !important;
+            }
+            table[class="body"] .container {
+                width: 95% !important;
+            }
+            table[class="body"] .row {
+                width: 100% !important;
+                display: block !important;
+            }
+            table[class="body"] .wrapper {
+                display: block !important;
+                padding-right: 0 !important;
+            }
+            table[class="body"] .columns,
+            table[class="body"] .column {
+                table-layout: fixed !important;
+                float: none !important;
+                width: 100% !important;
+                padding-right: 0px !important;
+                padding-left: 0px !important;
+                display: block !important;
+            }
+            table[class="body"] .wrapper.first .columns,
+            table[class="body"] .wrapper.first .column {
+                display: table !important;
+            }
+            table[class="body"] table.columns td,
+            table[class="body"] table.column td,
+            .col {
+                width: 100% !important;
+            }
+            table[class="body"] table.columns td.expander {
+                width: 1px !important;
+            }
+            table[class="body"] .right-text-pad,
+            table[class="body"] .text-pad-right {
+                padding-left: 10px !important;
+            }
+            table[class="body"] .left-text-pad,
+            table[class="body"] .text-pad-left {
+                padding-right: 10px !important;
+            }
+            table[class="body"] .hide-for-small,
+            table[class="body"] .show-for-desktop {
+                display: none !important;
+            }
+            table[class="body"] .show-for-small,
+            table[class="body"] .hide-for-desktop {
+                display: inherit !important;
+            }
+            .mixed-two-up .col {
+                width: 100% !important;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            div[class="col"] {
+                width: 100% !important;
+            }
+        }
+
+        @media screen and (min-width: 501px) {
+            table[class="container"] {
+                width: 500px !important;
+            }
+        }
+    </style>
+    <table class="body" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;height: 100%;width: 100%;table-layout: fixed" cellpadding="0" cellspacing="0" width="100%" border="0">
+        <tbody>
+            <tr style="vertical-align: top">
+                <td class="center" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;text-align: center;background-color: #FFFFFF" align="center" valign="top">
+
+                    <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;background-color: #2C2D37" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                        <tbody>
+                            <tr style="vertical-align: top">
+                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                    <!--[if gte mso 9]>
+                    <table id="outlookholder" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>
+                    <![endif]-->
+                                    <!--[if (IE)]>
+                    <table width="500" align="center" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td>
+                    <![endif]-->
+                                    <table class="container" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 500px;margin: 0 auto;text-align: inherit" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                        <tbody>
+                                            <tr style="vertical-align: top">
+                                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                                    <table class="block-grid two-up" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 500px;color: #333;background-color: transparent" cellpadding="0" cellspacing="0" width="100%" bgcolor="transparent">
+                                                        <tbody>
+                                                            <tr style="vertical-align: top">
+                                                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;text-align: center;font-size: 0">
+                                                                    <!--[if (gte mso 9)|(IE)]><table width="100%" align="center" bgcolor="transparent" cellpadding="0" cellspacing="0" border="0"><tr><![endif]-->
+                                                                    <!--[if (gte mso 9)|(IE)]><td valign="top" width="250"><![endif]-->
+                                                                    <div class="col num6" style="display: inline-block;vertical-align: top;text-align: center;width: 250px">
+                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                                                            <tbody>
+                                                                                <tr style="vertical-align: top">
+                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 20px;padding-right: 0px;padding-bottom: 5px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;width: 100%;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px" align="center">
+                                                                                                        <div style="font-size:12px" align="center">
+                                                                                                            <a href="https://beefree.io" target="_blank">
+                                                                                                                <img class="center" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;width: 139px;max-width: 139px" align="center" border="0" src="data:image/png;base64,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" alt="Image" title="Image" width="139">
+                                                                                                            </a>
+
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <!--[if (gte mso 9)|(IE)]></td><![endif]-->
+                                                                    <!--[if (gte mso 9)|(IE)]><td valign="top" width="250"><![endif]-->
+                                                                    <div class="col num6" style="display: inline-block;vertical-align: top;text-align: center;width: 250px">
+                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                                                            <tbody>
+                                                                                <tr style="vertical-align: top">
+                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 20px;padding-right: 0px;padding-bottom: 20px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;padding-left: 5px">
+                                                                                                        <div style="color:#FFFFFF;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+                                                                                                            <div style="font-size:12px;line-height:14px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;">
+                                                                                                                <div style="line-height:14px; font-size:12px; text-align: center;"><strong><span style="font-size: 16px; line-height: 19px;">STARS, All The Best</span></strong></div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <!--[if (gte mso 9)|(IE)]></td><![endif]-->
+                                                                    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--[if mso]>
+                    </td></tr></table>
+                    <![endif]-->
+                                    <!--[if (IE)]>
+                    </td></tr></table>
+                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;background-color: #323341" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                        <tbody>
+                            <tr style="vertical-align: top">
+                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                    <!--[if gte mso 9]>
+                    <table id="outlookholder" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>
+                    <![endif]-->
+                                    <!--[if (IE)]>
+                    <table width="500" align="center" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td>
+                    <![endif]-->
+                                    <table class="container" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 500px;margin: 0 auto;text-align: inherit" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                        <tbody>
+                                            <tr style="vertical-align: top">
+                                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                                    <table class="block-grid" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 500px;color: #000000;background-color: transparent" cellpadding="0" cellspacing="0" width="100%" bgcolor="transparent">
+                                                        <tbody>
+                                                            <tr style="vertical-align: top">
+                                                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;text-align: center;font-size: 0">
+                                                                    <!--[if (gte mso 9)|(IE)]><table width="100%" align="center" bgcolor="transparent" cellpadding="0" cellspacing="0" border="0"><tr><![endif]-->
+                                                                    <!--[if (gte mso 9)|(IE)]><td valign="top" width="500"><![endif]-->
+                                                                    <div class="col num12" style="display: inline-block;vertical-align: top;width: 100%">
+                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                                                            <tbody>
+                                                                                <tr style="vertical-align: top">
+                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px" align="center">
+                                                                                                        <div style="height: 10px;">
+                                                                                                            <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;border-top: 10px solid transparent;width: 100%" align="center" border="0" cellspacing="0">
+                                                                                                                <tbody>
+                                                                                                                    <tr style="vertical-align: top">
+                                                                                                                        <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" align="center"></td>
+                                                                                                                    </tr>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-top: 30px;padding-right: 0px;padding-bottom: 30px;padding-left: 0px">
+                                                                                                        <div style="color:#ffffff;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+                                                                                                            <div style="font-size:12px;line-height:14px;color:#ffffff;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;">
+                                                                                                                <p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><strong><span style="font-size: 28px; line-height: 33px;" mce-data-marked="1">Undangan Hak Akses</span></strong></p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px" align="center">
+                                                                                                        <div style="height: 10px;">
+                                                                                                            <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;border-top: 10px solid transparent;width: 100%" align="center" border="0" cellspacing="0">
+                                                                                                                <tbody>
+                                                                                                                    <tr style="vertical-align: top">
+                                                                                                                        <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" align="center"></td>
+                                                                                                                    </tr>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;width: 100%" align="center">
+                                                                                                        <div style="font-size:12px" align="center">
+                                                                                                            <a href="https://beefree.io" target="_blank">
+                                                                                                                <img class="center" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;width: 402px;max-width: 402px" align="center" border="0" src="data:image/png;base64,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" alt="Image" title="Image" width="402">
+                                                                                                            </a>
+
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <!--[if (gte mso 9)|(IE)]></td><![endif]-->
+                                                                    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--[if mso]>
+                    </td></tr></table>
+                    <![endif]-->
+                                    <!--[if (IE)]>
+                    </td></tr></table>
+                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;background-color: #61626F" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                        <tbody>
+                            <tr style="vertical-align: top">
+                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                    <!--[if gte mso 9]>
+                    <table id="outlookholder" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>
+                    <![endif]-->
+                                    <!--[if (IE)]>
+                    <table width="500" align="center" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td>
+                    <![endif]-->
+                                    <table class="container" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 500px;margin: 0 auto;text-align: inherit" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                        <tbody>
+                                            <tr style="vertical-align: top">
+                                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                                    <table class="block-grid" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 500px;color: #333;background-color: transparent" cellpadding="0" cellspacing="0" width="100%" bgcolor="transparent">
+                                                        <tbody>
+                                                            <tr style="vertical-align: top">
+                                                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;text-align: center;font-size: 0">
+                                                                    <!--[if (gte mso 9)|(IE)]><table width="100%" align="center" bgcolor="transparent" cellpadding="0" cellspacing="0" border="0"><tr><![endif]-->
+                                                                    <!--[if (gte mso 9)|(IE)]><td valign="top" width="500"><![endif]-->
+                                                                    <div class="col num12" style="display: inline-block;vertical-align: top;width: 100%">
+                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                                                            <tbody>
+                                                                                <tr style="vertical-align: top">
+                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 30px;padding-right: 0px;padding-bottom: 30px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-top: 25px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
+                                                                                                        <div style="color:#ffffff;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+                                                                                                            <div style="font-size:12px;line-height:14px;color:#ffffff;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;">
+                                                                                                                <p style="margin: 0;font-size: 18px;line-height: 22px;text-align: center"><span style="font-size: 24px; line-height: 28px;" mce-data-marked="1"><strong><span style="font-size: 18px; line-height: 21px;">Undangan untuk menjadi pengelola website</span>
+                                                                                                                    <br>PT. STARS Internasional</strong>
+                                                                                                                    </span>
+                                                                                                                </p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
+                                                                                                        <div style="color:#B8B8C0;line-height:150%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+                                                                                                            <div style="font-size:12px;line-height:18px;text-align:center;color:#B8B8C0;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+                                                                                                                <p style="margin: 0;font-size: 12px;line-height: 18px;text-align: center">Gunakan tombol atau link dibawah untuk melanjutkan pendaftaran</p>
+                                                                                                            </div>
+                                                                                                            <div style="font-size:12px;line-height:18px;color:#B8B8C0;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;">
+                                                                                                                <p style="margin: 0;font-size: 14px;line-height: 21px;text-align: center"><span style="font-size: 14px; line-height: 21px;"></span></p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td class="button-container" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-top: 15px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px" align="center">
+                                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                                                                                                            <tbody>
+                                                                                                                <tr style="vertical-align: top">
+                                                                                                                    <td class="button" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="100%" align="center" valign="middle">
+                                                                                                                        <!--[if mso]>
+                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href=""
+                  style="
+                    height:42px;
+                    v-text-anchor:middle;
+                    width:146px;"
+                    arcsize="60%"
+                    strokecolor="#C7702E"
+                    fillcolor="#C7702E" >
+                <w:anchorlock/>
+                  <center
+                    style="color:#ffffff;
+                      font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;
+                      font-size:16px;">
+              <![endif]-->
+                                                                                                                        <!--[if !mso]><!- - -->
+                                                                                                                        <div style="display: inline-block; border-radius: 25px;  -webkit-border-radius: 25px;  -moz-border-radius: 25px;  max-width: 25%; width: 100%; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent;" align="center">
+                                                                                                                            <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;height: 42" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                                                                                <tbody>
+                                                                                                                                    <tr style="vertical-align: top">
+                                                                                                                                        <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px; color: #ffffff;                  background-color: #C7702E;                  padding-top: 5px;                   padding-right: 20px; padding-bottom: 5px; padding-left: 20px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: center" valign="middle">
+                                                                                                                                            <!--<![endif]-->
+                                                                                                                                            <a style="display: inline-block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;background-color: #C7702E;color: #ffffff" href="http://{{link}}" target="_blank">
+                                                                                                                                                <span style="font-size:16px;line-height:32px;"><span style="font-size: 14px; line-height: 28px;" data-mce-style="font-size: 14px;" mce-data-marked="1">DAFTAR</span></span>
+                                                                                                                                            </a>
+                                                                                                                                            <!--[if !mso]><!- - -->
+                                                                                                                                        </td>
+                                                                                                                                    </tr>
+                                                                                                                                </tbody>
+                                                                                                                            </table>
+                                                                                                                        </div>
+                                                                                                                        <!--<![endif]-->
+                                                                                                                        <!--[if mso]>
+                    </center>
+                </v:roundrect>
+              <![endif]-->
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
+                                                                                                        <div style="color:#555555;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+                                                                                                            <div style="font-size:12px;line-height:14px;color:#555555;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;">
+                                                                                                                <p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><a style="color:#0000FF;text-decoration: underline; font-size: 14px; line-height: 16px; text-align: center;" href="http://{{link}}" target="_blank">{{link}}</a></p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px" align="center">
+                                                                                                        <div style="height: 0px;">
+                                                                                                            <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;border-top: 0px solid transparent;width: 100%" align="center" border="0" cellspacing="0">
+                                                                                                                <tbody>
+                                                                                                                    <tr style="vertical-align: top">
+                                                                                                                        <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" align="center"></td>
+                                                                                                                    </tr>
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <!--[if (gte mso 9)|(IE)]></td><![endif]-->
+                                                                    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--[if mso]>
+                    </td></tr></table>
+                    <![endif]-->
+                                    <!--[if (IE)]>
+                    </td></tr></table>
+                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;background-color: #ffffff" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                        <tbody>
+                            <tr style="vertical-align: top">
+                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                    <!--[if gte mso 9]>
+                    <table id="outlookholder" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>
+                    <![endif]-->
+                                    <!--[if (IE)]>
+                    <table width="500" align="center" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td>
+                    <![endif]-->
+                                    <table class="container" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 500px;margin: 0 auto;text-align: inherit" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                        <tbody>
+                                            <tr style="vertical-align: top">
+                                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="100%">
+                                                    <table class="block-grid" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 500px;color: #333;background-color: transparent" cellpadding="0" cellspacing="0" width="100%" bgcolor="transparent">
+                                                        <tbody>
+                                                            <tr style="vertical-align: top">
+                                                                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;text-align: center;font-size: 0">
+                                                                    <!--[if (gte mso 9)|(IE)]><table width="100%" align="center" bgcolor="transparent" cellpadding="0" cellspacing="0" border="0"><tr><![endif]-->
+                                                                    <!--[if (gte mso 9)|(IE)]><td valign="top" width="500"><![endif]-->
+                                                                    <div class="col num12" style="display: inline-block;vertical-align: top;width: 100%">
+                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+                                                                            <tbody>
+                                                                                <tr style="vertical-align: top">
+                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 30px;padding-right: 0px;padding-bottom: 30px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
+                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                                            <tbody>
+                                                                                                <tr style="vertical-align: top">
+                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" align="center" valign="top">
+                                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" border="0" cellspacing="0" cellpadding="0">
+                                                                                                            <tbody>
+                                                                                                                <tr style="vertical-align: top">
+                                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;text-align: center;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;max-width: 156px" align="center" valign="top">
+
+                                                                                                                        <!--[if (gte mso 9)|(IE)]>
+            <table width="166" align="left" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left">
+            <![endif]-->
+                                                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" width="100%" align="left" cellpadding="0" cellspacing="0" border="0">
+                                                                                                                            <tbody>
+                                                                                                                                <tr style="vertical-align: top">
+                                                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" align="left" valign="middle">
+
+
+                                                                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;padding: 0 5px 0 0" align="left" border="0" cellspacing="0" cellpadding="0" height="37">
+                                                                                                                                            <tbody>
+                                                                                                                                                <tr style="vertical-align: top">
+                                                                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="37" align="left" valign="middle">
+                                                                                                                                                        <a href="https://www.facebook.com/" title="Facebook" target="_blank">
+                                                                                                                                                            <img style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block;border: none;height: auto;line-height: 100%;max-width: 32px !important" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAA0pJREFUWAnFV01IVFEUPve+GW3U0ZpQzAINyiDITQYui4hMIXCRi4TauClwUaugMEtcRBBEYBFtXCRkkBSkYVAEgQNBUIugCDSIydIUndTyzZvX/e7MffPm970ZdLyg997z95059+97jFy2U30jJeFv+pEoYydZlPYLtzqTUR3cmUkh0YVMTp+4aT7z13tfP+7rXIPOqTEng7bzI7XGqtFLZrTLJKp0sodeBF0ixh9qPu362GDnTC6frAmc6BkrjYYXL5sUvSgClOcKkkO3zIjf4v6qgfE7bf8y2WVMAL86sqKPCoeWTE4FyIKeMm9HpmqkJdDaPdxkGuZz06RdBQBldWGMvjONtb94cPqj3Sgpgdh66+/WG1wBIgnN5z1krwRXSqw5yr5R4MBBbGAAS+F61AAbTozzWvPG3QE629FEe+oD5K8oobU1g0YnPtPQaFKVFYTqW+JYvRDICqD08d2ujBz7pn01dPvKcWo+sIO2VpaSxhn5tniorMzr6AssYMJQJmCs6FfFOK+jdq7rIHFrAR0xUw3K5d0ipAw33NK0Puv2kkGk0hKNnt7rJLGpZJt4O0VDTz7Qyt8I6bpBeiQaU+T4L1yXKhu81R5cr/mAI2bN9nILHPPxN19pbmEVQ9cNmMDmuNtde8UNufrp8blhiHAFNGB78LC4dcfGQ6utrkiC29sQkMsCYehX2HU1gI1jKF+0pIhZJjcvHc2o6TnTbMlv3J+kV5PT1txhUMfVk+pg6Fo9M/vHtS2wCz9IWWBm5pazaNLFTNyNHpAJsQca09XpkvbuR1JYv7OKBq+1WgYXBl7Sl6l5OY8YzkfQcjTZD1QAbMZVQ3D5l3LOcQqUzlWghFGIg0Yl5sUdSQoHDldc2AQasDkIJK7FhLg4I2ACm0v2KghkcWBtKAIT2PIYgr0KlfvzY4tT4HA5jhl7jkGRwF4LDJa3G7AULbMYEaizEV44JqI5sqL5xVW6O/zeAv75O6/iBYGlnOMvemy6qaQUKcilENQZ7FVluF49YoKWq9KruGlvAXg7qLMwCCqjdeiDiJn6TYC4aQlAiCw1/7bDYrP0i2leCwx/W8OnWT9ipf5yZZO0B5TQ3sf2xSZ8nNqTwHijPs//A01CT3sm1mNYAAAAAElFTkSuQmCC" alt="Facebook" title="Facebook" width="32">
+                                                                                                                                                        </a>
+                                                                                                                                                    </td>
+                                                                                                                                                </tr>
+                                                                                                                                            </tbody>
+                                                                                                                                        </table>
+                                                                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;padding: 0 5px 0 0" align="left" border="0" cellspacing="0" cellpadding="0" height="37">
+                                                                                                                                            <tbody>
+                                                                                                                                                <tr style="vertical-align: top">
+                                                                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="37" align="left" valign="middle">
+                                                                                                                                                        <a href="http://twitter.com/" title="Twitter" target="_blank">
+                                                                                                                                                            <img style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block;border: none;height: auto;line-height: 100%;max-width: 32px !important" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAA89JREFUWAnFV91rE0EQ/+3lTJO2pk1r7QcqUouaFn2y6IugFUQsKCoVxb+hiIJPokKLgiC++CL4rIIifqEiUi0IIogoxdYPilWU2tovbZomTc+sM5fc5XK5XFJtdeHY3ZnZ+c3NzM3OCRQ42nqlV7yd3Aohd0kpG4VAHc11fFwIMSglBmnugxR3ZCjw5HqTiBeiWuQTars3VYNY/KSQOCSBQD555pPSSSlwGT5vx/XW0iG3MzkNaL8vi4ajP45DyqMEXOKmJBePlEfIPeer/eWnL+wUM05yjgbwW4tY/Ca5dZPTobnSKFzPpc+7x8kbWQYcvD2+XtNwDxLL5grkKi/wVVXRenV3RY9VLsOAVLxfzDu4gUhGUF40Wz2hGDyOObt9wcAZiLzKGIxl4JoGcMLNV8wN5U4zY+jJnWLqIdCTLhrv/9NsdwJyoxFoRPq9DRwK3QMiGj/1N+BlRQItK71oC/mwoXaRib2kWIFPNbfmQsei2sIEkaxwEyNEdCwye9f6MB5NoPuzc2Fbt1TFkY0lKPWa0cT7MQ0xTaJxiYrDDycxSuftg7wwKUPBKpXLay5wPrR5uRe1ixVU+BXcfh/DLxI2RrEq0N6cCc68NZXJ1w7PJLB9VRGuvIkaR8yZMRlb4dpuUh0WCpmqUCU50OTH2W0BNAQ9plSoSkW5L/3mJiO1+DkjcfdDzE5O7wlb5YslTcle9Y5q5IEk6IoyD860BPDph4aeYQ0cY7fR+TSMcNziMpswY6vJW83GsWxrSrJBVpar4MdtzFKsJmK5wfksYyvGlZpLWU1p2uW5ZJzoYw6JZ5dj7OzXs0ndfJedQDYRx23Pd82RnkEUkJRfYjCDaNs8Goija8DxJrVJZm6ffXH+bK1SAuIbhQCuBvCB0ens79iqyL5+PTSLPkrefIOx2QN9+QRv0ff/cSK/QtbDBejSq+l8KnU+Yyvcw+WT5uJzsjuMx5/cQ6ElJC6+jGCkUI8RtmspXl3hQX1QRSVVwQZaN1Wl67zd6Eg8gXPPI+gdKcxTRilWuHvVG0i7RtqP03dcT5VvB5XTXODs8gf9MRzrChcMzlCMydhkCJDvOuYbrbnWi2UBBVXFHmiUPcNTCQxN/cIrqojTs+4FhzGsg0DN61g3gJn7b0x0UGE4YRVcqDUlX+e1fUH9OjYLEbfO3L0uFKihlzEYy9wbC57/a1PKBnCLxK0z/dp85f28jlRbbu2IWb+ZA1YwPSn/0Y+JmQNWA9jKan9wCycLZ6yVN5c1n2UdrMv+5oYeRw8YTJ5TefHvf06tRuiGLNDv+W/sBp2eY7Wv7wAAAABJRU5ErkJggg==" alt="Twitter" title="Twitter" width="32">
+                                                                                                                                                        </a>
+                                                                                                                                                    </td>
+                                                                                                                                                </tr>
+                                                                                                                                            </tbody>
+                                                                                                                                        </table>
+                                                                                                                                        <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;padding: 0 5px 0 0" align="left" border="0" cellspacing="0" cellpadding="0" height="37">
+                                                                                                                                            <tbody>
+                                                                                                                                                <tr style="vertical-align: top">
+                                                                                                                                                    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top" width="37" align="left" valign="middle">
+                                                                                                                                                        <a href="http://plus.google.com/" title="Google+" target="_blank">
+                                                                                                                                                            <img style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block;border: none;height: auto;line-height: 100%;max-width: 32px !important" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABJBJREFUWAnFV29sU1UU/93X164rXbt1f90fVuKY0UbUoImRCSOCGo2AfPWTgUiccUY+mKhRI8oXAyLqJkb9oBENZKgxaviAISRiTHRGgc4odd2W2W3AFlbWdm23d73ndu/52r5uHQz3kvbee/79zjv3nHvPYyjyCQYCjumJ2EYwvoVruAUM9YzzelLnjEXAEWEK+sTia6dvxclAMJgqxjRbSCjo99clUvxlaHhMQHkWks/wWRQKDpc62J7AwMDofDoFHTjf0lIyGU+/yDS+mwMr5jNSiCeMx7jC3vS67HtXh0JJKzlLB+itp6f5lxz8biulxdIY2E9OJ3vUKhp5DvQ2rlrDZ2e/FXvauFigeeUZhpnN9vDa4fAZs1yWA3K/k9rPSw6uIwonSkuUu8yRUHQe7TmF/bqBE5CIKmEQlo5rOEAJt1R7rhu3GgmDsHSe3IJM0mmhq8123VixowCNOZ1KC22FSkqJpPaKGAqWmlpdjbqnO+DduAGOhgbwdAqJv85j4thXuPjJp4CmFYst5ehF5dkCdDA64RLjUxcLHTK+7dvQ9PqrUCvKLUFiv59F/44nkPonYskvTGTR0kp3tSqP1wInHIGv6jpo2EhfuoS4AFRcLrhuuxU2MU6HQkiNzHvYGfrZE+4hbJXOdpGdeY+9rhZNe/dIOp+ZQeSN/RjtOmSE215TA9/2rRh7/0MRvHwDNq8XJf6VSA4OYfbyZJ59SRDYirxYLNh1nU9BLfdKzug73aCfea/TFy5g7NAHluCk5Glfj5uPfwPvpvssrGdIhC0igHqrCHjaN0gpLZXCyMF3DSNqZSVqdj5urM2T8aM9SI+OQXG7YfOUSZatrAyUxFosBi0eN4tD3qi9dSuviAC6sznAHeE/oTidiJ8L4o/NDxlsZ+tqBE6dMNbmSbijE46mRjQ8/5yZLOeRfQcwsv+tLLooxylZhlnUuYUWT0gH7NVVVmxLmrhDED97TpTmYbH/zfCsb0P0h9NI9g/I5M1V4iIB1UwzwVtzmfG+Pnja1sFeWwvX7WsQ/y1zhyT7wziz9r9LsvGlF+DbtkWqJ4eGpFz05ClUbH1EOjB+pAcTPV/kms+sGUYUsf+WBTz+2RFDyX9gH2xz5wBVRDoyIn+qxwPv5kySUSlSiepPemwMkye+l3I6LW+kLqq3vrmLa7wjjykIN378Ecrv3yRZlPWjb3djqvdXKA47ytbdg5pdO6GKcqPn7x27cPm743Je7B9TWDfrvcH/AOeapaZaVYXWns9RelPeDmVhjB89hoFndmfRilkwpjyoUAMp6iFqpTAjTj6qACpDCn3uMyMOmHDns1cFTpiELW/DX+qbu6HxJ3MBzGvVV4Gye9uMyygZHsSV0z9CSyTMYsXPFfbenZHBDunAcl7HsiGhe5m61+LdvzZJwtLbMqMjotaZutdrM72wNmEQli4pt0BfLGtTSk5QWKh1FpfEsO7Uko1zbbkeet1uVgR0YiYp/58PEyMHdHAayUuP294Ohb0mPIyZeYuZS11hg2zlvrluxzICOpNGmRfL8XFqdkI6cp0+z/8FhArzGF/W4R8AAAAASUVORK5CYII=" alt="Google+" title="Google+" width="32">
+                                                                                                                                                        </a>
+                                                                                                                                                    </td>
+                                                                                                                                                </tr>
+                                                                                                                                            </tbody>
+                                                                                                                                        </table>
+
+                                                                                                                                    </td>
+                                                                                                                                </tr>
+                                                                                                                            </tbody>
+                                                                                                                        </table>
+                                                                                                                        <!--[if (gte mso 9)|(IE)]>
+                </td>
+              </tr>
+            </table>
+            <![endif]-->
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <!--[if (gte mso 9)|(IE)]></td><![endif]-->
+                                                                    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--[if mso]>
+                    </td></tr></table>
+                    <![endif]-->
+                                    <!--[if (IE)]>
+                    </td></tr></table>
+                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>
