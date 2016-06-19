@@ -54,4 +54,49 @@ $app->group('/admin/article', function () {
         ]);
     })->setName('admin-article-add');
 
+    $this->post('/add', function ($req, $res, $args) {
+        if(!isset($this->session->user_id)){
+            return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-login'));
+        }
+        if(isset($_FILES["article_image"])){
+            if ($_FILES["article_image"]["type"] == "image/bmp" || $_FILES["article_image"]["type"] == "image/png" || $_FILES["article_image"]["type"] == "image/jpeg"){
+                $user_id = $this->session->user_id;
+                $article_title = $_POST['article_title'];
+                $article_text = $_POST['article_text'];
+                $article_type = $_POST['article_type'];
+
+                $ext = end((explode(".", $_FILES['article_image']['name'])));
+                $sourcePath = $_FILES['article_image']['tmp_name'];
+                $file = 'article-'.$article_title."-".date("-Y-m-d-H-i-s-").'.'.$ext;
+                $file = mb_ereg_replace("([^\w\s\d\-_~,;\[\]\(\).])", '', $product_name);
+                $targetPath = "public/data/article/".$file; // Target path where file is to be stored
+                move_uploaded_file($sourcePath, $targetPath) ; // Moving Uploaded file
+                $insert = $this->db->prepare("
+                insert into article
+                values('', :article_title, :article_date, :article_text, :article_image, '',  :article_type);
+                ");
+                $insert->bindParam(':article_title', $article_title, PDO::PARAM_STR);
+                $insert->bindParam(':article_date', date('Y-m-d h:i:s', time()), PDO::PARAM_STR);
+                $insert->bindParam(':article_text', $article_text, PDO::PARAM_STR);
+                $insert->bindParam(':article_image', $file, PDO::PARAM_STR);
+                $insert->bindParam(':article_type', $article_type, PDO::PARAM_STR);
+                if($insert->execute()){
+                    $article_id = $this->db->lastInsertId();
+                    $this->db->exec("insert into do_article values('', '".$user_id."', '".$article_id."', 'add', '".date('Y-m-d h:i:s', time())."')");
+                    return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-article'));
+                }else{
+                    return $c['response']->withStatus(500)
+                        ->withHeader('Content-Type', 'text/html')
+                        ->write('Something went wrong!');
+                }
+                return $c['response']->withStatus(500)
+                    ->withHeader('Content-Type', 'text/html')
+                    ->write('Something went wrong!');
+            }
+            return $c['response']->withStatus(500)
+                ->withHeader('Content-Type', 'text/html')
+                ->write('Something went wrong!');
+        }
+    });
+
 })->add($user_detail);
