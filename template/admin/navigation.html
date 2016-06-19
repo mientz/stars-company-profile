@@ -21,9 +21,11 @@
                     <a href="{{ path_for('admin-banner') }}" class="list-group-item {% if active == 'banner' %} active {% endif %}">
                         Banner
                     </a>
+                    {% if user_detail.permission == 'admin' %}
                     <a href="{{ path_for('admin-users') }}" class="list-group-item {% if active == 'user' %} active {% endif %}">
-                        <span class="badge">2</span> Pengguna
+                        <span class="badge">{{ user_count }}</span> Pengguna
                     </a>
+                    {% endif %}
                     <a href="contact" class="list-group-item {% if active == 'contact' %} active {% endif %}">
                         <span class="badge">3</span> Pesan
                     </a>

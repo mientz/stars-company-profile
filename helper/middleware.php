@@ -12,6 +12,9 @@ $user_detail = function ($req, $res, $next) {
     $select->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $select->execute();
     $req = $req->withAttribute('user_detail', $select->fetch(PDO::FETCH_ASSOC));
+
+    $user_count = $this->db->query("select count(user_id) from user")->fetchColumn();
+    $req = $req->withAttribute('user_count', $user_count);
     $response = $next($req, $res);
     return $response;
 };
