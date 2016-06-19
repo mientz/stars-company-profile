@@ -1,6 +1,6 @@
 <?php
 $app->get('/admin', function ($req, $res, $args) {
-    if(isset($_SESSION["user_id"])){
+    if(isset($this->session->user_id)){
         return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-product'));
     }
     $select = $this->db->query("select * from user")->fetchAll(PDO::FETCH_ASSOC);
@@ -25,3 +25,9 @@ $app->post('/admin', function ($req, $res, $args) {
     }
     return $res;
 });
+
+$app->get('/admin/logout', function ($req, $res, $args) {
+    $session = new \SlimSession\Helper;
+    $session::destroy();
+    return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-product'));
+})->setName('admin-logout');

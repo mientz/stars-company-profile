@@ -40,7 +40,7 @@ Artikel
                                 {% for search in search_param %}
                                 <li class="active hidden-sm hidden-xs text-black">
                                     {% if search.id and search.title %}
-                                    <a href="{{ path_for('admin-product') }}/{{search.id}}">
+                                    <a href="{{ path_for('admin-article') }}/{{search.id}}">
                                         {% endif %}
                                         {{search.title}}
                                         {% if search.id %}
@@ -48,9 +48,12 @@ Artikel
                                     {% endif %}
                                 </li>
                                 {% endfor %}
+                                <li class="pull-right">
+                                    <a href="{{ path_for('admin-article') }}">Tampilkan Semua Artikel</a>
+                                </li>
                                 {% else %}
                                 <li>
-                                    <a href="{{ path_for('admin-product') }}">Semua Artikel</a>
+                                    <a href="{{ path_for('admin-article') }}">Semua Artikel</a>
                                 </li>
                                 {% endif %}
                             </ul>
@@ -79,8 +82,8 @@ Artikel
                                         <td>{{article.article_date}}</td>
                                         <td>
                                             <div class="btn-group" style="float:right;">
-                                                <a href="/admin/edit/article/{{article.article_id}}" class="btn btn-primary"><i class="mdi mdi-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete" data-title="{{article.article_title}}" data-image="{{article.article_image}}" data-text="{{article.article_text}}" data-id="{{article.article_id}}"><i class="mdi mdi-delete"></i></a>
+                                                <a href="{{ path_for('admin-article-edit', {'article_id':article.article_id }) }}" class="btn btn-primary"><i class="mdi mdi-pencil"></i></a>
+                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete" data-title="{{article.article_title}}" data-image="{{article.article_image}}" data-text="{{article.article_text}}" data-path="{{ path_for('admin-article-delete', {'article_id':article.article_id }) }}"><i class="mdi mdi-delete"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -111,13 +114,55 @@ Artikel
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Apakah anda yakin untuk menghapus artikel ini?</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 {% block js %}
 {{ parent() }}
+{% verbatim %}
+<script id="delete-template" type="x-tmpl-mustache">
+<img src="public/data/article/{{article_image}}" width="300">
+<br>
+<h2>{{article_title}}</h2>
+<div style="max-width: 100%; max-height:350px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+    {{{article_text}}}
+</div>
+<div class="modal-footer">
+    <a href="{{path}}" class="btn btn-danger">Hapus</a>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</script>
+{% endverbatim %}
 <script>
     $(function () {
         var $affixElement = $('div[data-spy="affix"]');
         $affixElement.width($affixElement.parent().width());
+
+    });
+    $('#delete').on('show.bs.modal', function (event) {
+        console.log("lala");
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        var template = $('#delete-template').html();
+        Mustache.parse(template);   // optional, speeds up future uses
+        var rendered = Mustache.render(template, {
+            article_title:button.data('title'),
+            article_text:button.data('text'),
+            article_image:button.data('image'),
+            path:button.data('path')
+        });
+        modal.find('.modal-body').html(rendered);
 
     });
 </script>

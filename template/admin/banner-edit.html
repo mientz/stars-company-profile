@@ -1,0 +1,75 @@
+{% extends "admin/base.html" %}
+{% block title %}
+Banner
+{% endblock %}
+{% block body %}
+{% include 'admin/header.html' %}
+<div class="section first">
+    <div class="container">
+        <div class="row">
+            {% include 'admin/navigation.html' with {'active': 'banner' } %}
+            <div class="col-md-10">
+                <div class="section thick  hidden-sm hidden-xs">
+                    <div class="row">
+                        <legend>Edit Banner</legend>
+                        <form method="post" enctype="multipart/form-data">
+                            <img width="100%" src="public/data/banner/{{banners.carousel_image}}" id="viewer">
+                            <div class="form-horizontal" style="padding-top:10px;" data-toggle="tooltip" data-placement="bottom" title="Pilih file foto banner dengan format .jpg / .png / .bmp">
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label for="inputEmail3" class="control-label">File Foto Banner</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="file" name="banner_image" onchange="loadname(this,'viewer');">
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="form-horizontal">
+                                <div class="[ form-group ]">
+                                    <input type="checkbox" name="banner_status" id="fancy-checkbox-primary" class="check-cards" value="hidden" {% if banners.carousel_status == 'hidden' %} checked {% endif %}/>
+                                    <div class="[ btn-group ]  pull-right">
+                                        <label for="fancy-checkbox-primary" class="[ btn btn-default ]">
+                                            <span class="[ glyphicon glyphicon glyphicon-eye-open ] text-disable"> Tersembunyi</span>
+                                            <span class="[ glyphicon glyphicon glyphicon-eye-close ] text-primary"> Sembunyikan</span>
+                                        </label>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <a href="{{ path_for('admin-banner') }}" type="submit" class="btn btn-default">Batal</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+{{ parent() }}
+{% verbatim %}
+{% endverbatim %}
+<script>
+    $(function () {
+        var $affixElement = $('div[data-spy="affix"]');
+        $affixElement.width($affixElement.parent().width());
+    });
+    function loadname(img, previewName){
+
+        var isIE = (navigator.appName=="Microsoft Internet Explorer");
+        var path = img.value;
+        var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();
+        if(isIE) {
+            $('#'+ previewName).replaceWith('<img width="100%" src="'+path+'">');
+        }else{
+            if (img.files[0]){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#'+ previewName).replaceWith('<img width="100%" src="'+e.target.result+'">');
+                }
+                reader.readAsDataURL(img.files[0]);
+            }
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "admin/base.html" %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+{% block title %}New Article
+{% endblock %} {% block body %}
+{% include 'admin/header.html' %}
+<div class="section first">
+    <div class="container">
+        <div class="row">
+            {% include 'admin/navigation.html' with {'active': 'article' } %}
+            <div class="col-md-10 box">
+                <div class="section thick  hidden-sm hidden-xs">
+                    <div class="section" style="margin-top:20px;">
+                        <form method="post" action="" enctype="multipart/form-data">
+                            <div class="row">
+                                <legend>Edit Artikel</legend>
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="col-sm-2">
+                                                <label for="inputEmail3" class="control-label">Judul Artikel</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control no-radius lightblack-border" name="article_title" placeholder="Tuliskan Judul artikel disini" tabindex="1" required value="{{article.article_title}}">
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <img width="100%" src="public/data/article/{{article.article_image}}" id="viewer">
+                                <div class="form-horizontal" style="padding-top:10px;">
+                                    <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Pilih file foto produk dengan format .jpg / .png / .bmp">
+                                        <div class="col-sm-2">
+                                            <label for="inputEmail3" class="control-label">File Foto Header Artikel</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <input type="file" name="article_image" onchange="loadname(this,'viewer');">
+                                        </div>
+                                    </div>
+                                    <fieldset>
+                                        <legend>Isi Artikel</legend>
+                                        <textarea name="article_text" id="article_text" rows="10" cols="80">
+                                            {{article.article_text}}
+                                        </textarea>
+                                    </fieldset>
+                                </div><br>
+                                <div class="row col-md-12">
+                                    <div class="col-md-3 box">
+                                        <div class="form-horizontal">
+                                            <fieldset>
+                                                <legend>Kategori Artikel</legend>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12"  data-toggle="tooltip" data-placement="bottom" title="Pilih kategori artikel">
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="article_type" id="optionsRadios1" value="promo" required {% if article.article_type == 'promo' %} checked {% endif %}>
+                                                                Promo
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="article_type" id="optionsRadios2" value="news" required {% if article.article_type == 'news' %} checked {% endif %}>
+                                                                Berita
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-6 box">
+                                        <div class="form-horizontal">
+                                            <fieldset>
+                                                <legend>Penerbitan Artikel</legend>
+                                                <div class="form-group">
+                                                    <div class="btn-group pull-right">
+                                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                                        <a href="{{ path_for('admin-article') }}" class="btn btn-danger">Batal</a>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+{{ parent() }}
+<script type="text/javascript" src="public/ckeditor/ckeditor.js"></script>
+<script>
+    $(function () {
+        var $affixElement = $('div[data-spy="affix"]');
+        $affixElement.width($affixElement.parent().width());
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+    $(document).ready(function(){
+        CKEDITOR.replace( 'article_text' );
+    });
+    function loadname(img, previewName){
+
+        var isIE = (navigator.appName=="Microsoft Internet Explorer");
+        var path = img.value;
+        var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();
+        if(isIE) {
+            $('#'+ previewName).replaceWith('<img width="100%" src="'+path+'">');
+        }else{
+            if (img.files[0]){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#'+ previewName).replaceWith('<img width="100%" src="'+e.target.result+'">');
+                }
+                reader.readAsDataURL(img.files[0]);
+            }
+        }
+    }
+</script>
+{% endblock %}

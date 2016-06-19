@@ -1,0 +1,107 @@
+{% extends "admin/base.html" %}
+{% block title %}
+Banner
+{% endblock %}
+{% block body %}
+{% include 'admin/header.html' %}
+<div class="section first">
+    <div class="container">
+        <div class="row">
+            {% include 'admin/navigation.html' with {'active': 'banner' } %}
+            <div class="col-md-10">
+                <div class="section thick  hidden-sm hidden-xs">
+                    <div class="section thick">
+                        <div class="row">
+                            <div style="float:left; padding-right:10px;">
+                                <div class="btn-group btn-group-sm btn-short-by">
+                                    <a class="btn btn-primary" href="{{ path_for('admin-banner-add') }}"> Tambah Banner</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section" style="margin-top:20px;">
+                        <div class="row">
+                            <table class="table table-striped table-hover col-md-12 box box-cards">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox"></th>
+                                        <th>Gambar</th>
+                                        <th>Status</th>
+                                        <th style="text-align:right;">Tindakan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for banner in banners %}
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td style="background:url({{ path_for('home') }}public/data/banner/{{banner.carousel_image}}) no-repeat center center; background-size:cover;">
+                                            <div style="width:400px; height:80px;"></div>
+                                        </td>
+                                        <td>{% if banner.carousel_status == 'visible' %}Terlihat{% else %}Tersembunyi{% endif %}</td>
+                                        <td>
+                                            <div class="btn-group" style="float:right;">
+                                                {% if banner.carousel_status == 'visible' %}
+                                                <a href="{{ path_for('admin-banner-edit', {'banner_id': banner.carousel_id, 'status': 'hidden'}) }}" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Rubah menjadi tak terlihat"><i class="mdi mdi-eye-off text-danger"></i></a>
+                                                {% else %}
+                                                <a href="{{ path_for('admin-banner-edit', {'banner_id': banner.carousel_id, 'status': 'visible'}) }}" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Rubah menjadi terlihat"><i class="mdi mdi-eye text-primary"></i></a>
+                                                {% endif %}
+                                                <a class="btn btn-danger" data-toggle="modal" data-target="#delete" data-image="{{banner.carousel_image}}" data-path="{{ path_for('admin-banner-delete', {'banner_id': banner.carousel_id}) }}" ><i class="mdi mdi-delete"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Apakah anda yakin untuk menghapus banner ini?</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+{{ parent() }}
+{% verbatim %}
+<script id="delete-template" type="x-tmpl-mustache">
+    <img src="public/data/banner/{{banner_image}}" width="300">
+    <div class="modal-footer">
+        <a href="{{path}}" class="btn btn-danger">Hapus</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</script>
+{% endverbatim %}
+<script>
+    $(function () {
+        var $affixElement = $('div[data-spy="affix"]');
+        $affixElement.width($affixElement.parent().width());
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+    $('#delete').on('show.bs.modal', function (event) {
+        console.log("lala");
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        var template = $('#delete-template').html();
+        Mustache.parse(template);   // optional, speeds up future uses
+        var rendered = Mustache.render(template, {
+            banner_image:button.data('image'),
+            path:button.data('path')
+        });
+        modal.find('.modal-body').html(rendered);
+
+    });
+</script>
+{% endblock %}

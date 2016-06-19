@@ -18,10 +18,10 @@
                     <a href="{{ path_for('admin-article') }}" class="list-group-item {% if active == 'article' %} active {% endif %}">
                         Artikel
                     </a>
-                    <a href="admin/view/banner" class="list-group-item {% if active == 'banner' %} active {% endif %}">
+                    <a href="{{ path_for('admin-banner') }}" class="list-group-item {% if active == 'banner' %} active {% endif %}">
                         Banner
                     </a>
-                    <a href="admin/view/user" class="list-group-item {% if active == 'user' %} active {% endif %}">
+                    <a href="{{ path_for('admin-users') }}" class="list-group-item {% if active == 'user' %} active {% endif %}">
                         <span class="badge">2</span> Pengguna
                     </a>
                     <a href="contact" class="list-group-item {% if active == 'contact' %} active {% endif %}">
