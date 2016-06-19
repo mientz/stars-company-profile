@@ -1,0 +1,184 @@
+{% extends "admin/base.html" %}
+{% block title %}Product
+{% endblock %} {% block body %}
+{% include 'admin/header.html' %}
+<div class="section first">
+    <div class="container">
+        <div class="row box">
+            <form method="post" action="{{ path_for('admin-product-edit-post') }}"  enctype="multipart/form-data">
+                <div class="col-md-5 col-sm-5 col-xs-12">
+                    <div data-spy="affix" data-offset-top="60" style="width:450px;margin-top:10px;">
+                        <div style="width:100%;">
+                            <legend>Produk</legend>
+                            <img width="100%" src="public/data/product/{{product_detail.product_image}}" id="previewer">
+                            <div class="form-horizontal" style="padding-top:10px;" data-toggle="tooltip" data-placement="bottom" title="Pilih file foto produk dengan format .jpg / .png / .bmp">
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label for="inputEmail3" class="control-label">File Foto Produk</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="file" name="product_image" onchange="loadname(this,'viewer');">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-7 col-xs-12" style="padding-top:10px;">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <legend>Informasi Produk</legend>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class="control-label">Nama Produk</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control no-radius lightblack-border" name="product_name" placeholder="Sepatu Black Dragon" tabindex="1" value="{{product_detail.product_name}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class="control-label">Kode Produk</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="occupation" class="form-control no-radius lightblack-border" name="product_code" placeholder="BLK0DRG6" tabindex="2" value="{{product_detail.product_code}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class="control-label">Merek Produk</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" id="occupation" class="form-control no-radius lightblack-border" name="product_brand" placeholder="BLK0DRG6" tabindex="3" value="{{product_detail.product_brand}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class="control-label">Bahan Produk</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control no-radius lightblack-border" name="product_material" placeholder="Karet Sintetis" tabindex="4" value="{{product_detail.product_material}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class="control-label">Warna Produk</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control no-radius lightblack-border" name="product_color" placeholder="Black" tabindex="5" value="{{product_detail.product_color}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class="control-label">Ukuran Produk</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control no-radius lightblack-border" name="product_size" placeholder="34-36" tabindex="6" value="{{product_detail.product_size}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class="control-label">Harga Produk</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control no-radius lightblack-border" name="product_price" placeholder="30000" tabindex="7" value="{{product_detail.product_price}}">
+                                </div>
+                            </div>
+                            <legend>Kategori Produk</legend>
+                            <div class="form-group"   data-toggle="tooltip" data-placement="top" title="Untuk Menambahkan banyak kategori silahkan pisahkan setiap kategori dengan koma (,)">
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class="control-label">Kategori</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    {% for category in categories %}
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" class="check-category category" name="product_category_parent" value="{{category.category_id}}">
+                                            {{category.category_name}}
+                                            {% for category_child in category.category_child %}
+                                            <div class="radio radio-childern" style="display:none;">
+                                                <label>
+                                                    <input class="category" type="radio" name="product_category_children" value="{{category_child.category_id}}">
+                                                    {{category_child.category_name}}
+                                                </label>
+                                            </div>
+                                            {% endfor %}
+                                        </label>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <legend>Informasi Tambahan</legend>
+                            <div class="form-group"   data-toggle="tooltip" data-placement="top" title="pilih untuk menjadikan produk populer">
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class="control-label">Produk Populer</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="product_ispopular" value="1" {% if product_detail.product_ispopular %}checked{% endif %} > Populer
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <input type="hidden" name="product_id" value="{{product_detail.product_id}}">
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <a href="{{ path_for('admin-product') }}" class="btn btn-default">Batal</a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+{{ parent() }}
+<script>
+    $(function () {
+        var $affixElement = $('div[data-spy="affix"]');
+        $affixElement.width($affixElement.parent().width());
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+    $(document).ready(function(){
+        $(".check-category:radio").change(function() {
+            if($(this).is(':checked')){
+                $(".check-category:radio").nextAll().css("display", "none");
+                $(".check-category:radio").nextAll().find('input[type="radio"]').removeAttr('checked');
+                $(this).nextAll().css("display", "block");
+            }
+        });
+        var categories = "{{product_detail.product_category}}"
+        var category_array = categories.split(', ');
+        category_array.forEach(function (elm, i, array){
+            $('.category').each(function(x, y){
+                if($(this).val() == elm){
+                    $(this).nextAll().css("display", "block");
+                    $(this).attr('checked', '');
+                }
+            })
+        });
+    });
+    function loadname(img, previewName){
+
+        var isIE = (navigator.appName=="Microsoft Internet Explorer");
+        var path = img.value;
+        var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();
+        if(isIE) {
+            $('#'+ previewName).replaceWith('<img width="100%" src="'+path+'">');
+        }else{
+            if (img.files[0]){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#'+ previewName).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(img.files[0]);
+            }
+        }
+    }
+</script>
+{% endblock %}

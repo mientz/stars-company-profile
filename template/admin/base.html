@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        <base href="{{ path_for('home') }}">
+        <!--[if lte IE 6]></base><![endif]-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{% endblock %} - Admin Web PT.STARS Internasional</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="public/assets/admin/css/bootstrap.css">
+        <link href="public/assets/admin/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/admin/css/main.css" rel="stylesheet" type="text/css">
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        <!--[if lt IE 9]>
+<script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
+<script src="public/assets/js/respond.js"></script>
+<![endif]-->
+        {% block js %}
+        <script type="text/javascript" src="public/assets/admin/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/admin/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/admin/js/mustache.min.js"></script>
+        <script type="text/javascript" src="public/assets/admin/js/bootstrap3-typeahead.min.js"></script>
+        {% endblock %}
+    </body>
+</html>

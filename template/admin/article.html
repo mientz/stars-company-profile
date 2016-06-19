@@ -1,0 +1,124 @@
+{% extends "admin/base.html" %}
+{% block title %}
+Artikel
+{% endblock %}
+{% block body %}
+{% include 'admin/header.html' %}
+<div class="section first">
+    <div class="container">
+        <div class="row">
+            {% include 'admin/navigation.html' with {'active': 'article' } %}
+            <div class="col-md-10">
+                <div class="section thick  hidden-sm hidden-xs">
+                    <div class="row box box-search">
+                        <form method="post" class="col-md-12 hidden-sm hidden-xs no-padding-left no-padding-right no-padding-bottom">
+                            <div class="form-group col-md-11  no-padding-bottom no-margin-bottom">
+                                <div class="col-md-12 no-padding-left no-padding-right">
+                                    <div class="input-group no-radius">
+                                        <span class="input-group-addon no-radius"><i class="mdi mdi-magnify"></i></span>
+                                        <input type="text" id="product_search" name="search" class="form-control no-radius" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 no-padding-left">
+                                <input type="button" class="form-control no-radius btn btn-primary" id="search" value="Cari">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="section thick">
+                    <div class="row">
+                        <div style="float:left; padding-right:10px;">
+                            <div class="btn-group btn-group-sm btn-short-by">
+                                <a class="btn btn-primary" href="/admin/add/product"> Buat Artikel Baru</a>
+                            </div>
+                        </div>
+                        <div style="width:100%;" class="">
+                            <ul class="breadcrumb no-margin-bottom">
+                                {% if search_param %}
+                                <li>Pencarian</li>
+                                {% for search in search_param %}
+                                <li class="active hidden-sm hidden-xs text-black">
+                                    {% if search.id and search.title %}
+                                    <a href="{{ path_for('admin-product') }}/{{search.id}}">
+                                        {% endif %}
+                                        {{search.title}}
+                                        {% if search.id %}
+                                    </a>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                                {% else %}
+                                <li>
+                                    <a href="{{ path_for('admin-product') }}">Semua Artikel</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="section" style="margin-top:20px;">
+                    <div class="row ">
+                        <div class="col-md-10 box box-cards">
+                            <table class="table table-striped table-hover col-md-10 box box-cards">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox"></th>
+                                        <th>Judul</th>
+                                        <th>kategori</th>
+                                        <th>Tanggal</th>
+                                        <th style="text-align:right;">Tindakan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for article in articles %}
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td>{{article.article_title}}</td>
+                                        <td>{{article.article_type}}</td>
+                                        <td>{{article.article_date}}</td>
+                                        <td>
+                                            <div class="btn-group" style="float:right;">
+                                                <a href="/admin/edit/article/{{article.article_id}}" class="btn btn-primary"><i class="mdi mdi-pencil"></i></a>
+                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete" data-title="{{article.article_title}}" data-image="{{article.article_image}}" data-text="{{article.article_text}}" data-id="{{article.article_id}}"><i class="mdi mdi-delete"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-2" style="">
+                            <div class="section">
+                                <div class="box hidden-sm hidden-xs row">
+                                    <div class="col-sm-12" style="padding: 5px">
+                                        <center><b>Kategori</b></center>
+                                        <div class="list-group">
+                                            {% for key, category in article_category %}
+                                            <a class="list-group-item" href="{{ path_for('admin-article', {'category': category}) }}">
+                                                <span class="badge"><i class=" mdi mdi-plus"></i></span> {{key}}
+                                            </a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <!--                                            <a class="btn btn-primary col-md-12" data-toggle="modal" data-target="#category">Edit Kategori</a>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+{{ parent() }}
+<script>
+    $(function () {
+        var $affixElement = $('div[data-spy="affix"]');
+        $affixElement.width($affixElement.parent().width());
+
+    });
+</script>
+{% endblock %}

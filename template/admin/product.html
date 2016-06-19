@@ -1,0 +1,208 @@
+{% extends "admin/base.html" %}
+{% block title %}Product
+{% endblock %} {% block body %}
+{% include 'admin/header.html' %}
+<div class="section first">
+    <div class="container">
+        <div class="row">
+            {% include 'admin/navigation.html' with {'active': 'product' } %}
+            <div class="col-md-10">
+                <div class="section thick  hidden-sm hidden-xs">
+                    <div class="row box box-search">
+                        <form method="post" class="col-md-12 hidden-sm hidden-xs no-padding-left no-padding-right no-padding-bottom">
+                            <div class="form-group col-md-11  no-padding-bottom no-margin-bottom">
+                                <div class="col-md-12 no-padding-left no-padding-right">
+                                    <div class="input-group no-radius">
+                                        <span class="input-group-addon no-radius"><i class="mdi mdi-magnify"></i></span>
+                                        <input type="text" id="product_search" name="search" class="form-control no-radius" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 no-padding-left">
+                                <input type="button" class="form-control no-radius btn btn-primary" id="search" value="Cari">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="section thick">
+                    <div class="row">
+                        <div style="float:left; padding-right:10px;">
+                            <div class="btn-group btn-group-sm btn-short-by">
+                                <a class="btn btn-primary" href="{{ path_for('admin-product-add') }}"> Tambah Produk</a>
+                            </div>
+                        </div>
+                        <div style="width:100%;" class="">
+                            <ul class="breadcrumb no-margin-bottom">
+                                {% if search_param %}
+                                <li>Pencarian</li>
+                                {% for search in search_param %}
+                                <li class="active hidden-sm hidden-xs text-black">
+                                    {% if search.id and search.title %}
+                                    <a href="{{ path_for('admin-product') }}/{{search.id}}">
+                                        {% endif %}
+                                        {{search.title}}
+                                        {% if search.id %}
+                                    </a>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                                <li class="pull-right">
+                                    <a href="{{ path_for('admin-product') }}">Tampilkan Semua Produk</a>
+                                </li>
+                                {% else %}
+                                <li>
+                                    <a href="{{ path_for('admin-product') }}">Semua Produk</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="section" style="margin-top:20px;">
+                    <div class="row ">
+                        <div class="col-md-10 box box-cards">
+                            <ul class="media-list">
+                                {% for product in products %}
+                                <li class="media media-cards">
+                                    <a class="pull-left" style="display: block; cursor: pointer;" data-img="{{product.product_image}}" data-type="image" data-toggle="modal" data-target="#preview">
+                                        <img src="public/data/product/{{product.product_image}}" width="100">
+                                    </a>
+                                    <div class="media-body row">
+                                        <div class="col-md-6" style="height:110px;">
+                                            <h4 class="media-heading text-uppercase"><b>{{product.product_name}}</b></h4>
+                                            <h5 class="media-heading">{{product.product_code}}</h5>
+                                            <h5 class="media-heading"><b>{{product.product_brand}}</b></h5>
+                                            <h5 class="media-heading"><i class="mdi mdi-star" {% if product.product_ispopular %}style="color:gold;"{% endif %}></i></h5>
+                                            <h5 style="position: absolute;bottom: 0;word-wrap: break-word;"><b>Rp. {{product.product_price}},-</b></h5>
+                                        </div>
+                                        <div class="col-md-4 text-right" style="height:130px;">
+                                            <h5 class="media-heading">{{product.product_material}} <i class="mdi mdi-format-list-bulleted"></i></h5>
+                                            <h5 class="media-heading">{{product.product_color}} <i class="mdi mdi-invert-colors"></i></h5>
+                                            <h5 class="media-heading">{{product.product_size}} <i class="mdi mdi-move-resize-variant"></i></h5>
+                                            <h5 class="media-heading">{{product.product_category}} <i class="mdi mdi-marker-check text-success"></i></h5>
+                                            <h5 class="media-heading">{{product.product_view}} <i class="mdi mdi-eye"></i></h5>
+                                        </div>
+                                        <div class="col-md-2 text-right no-padding-right no-margin-right" style="height:130px;">
+                                            <div class="[ form-group ]">
+                                                <div class="[ btn-group btn-group-xs ]">
+                                                    <a href="{{ path_for('admin-product-edit', {'product_id': product.product_id}) }}" class="btn btn-primary btn-xs no-margin-right" style="float:right; width:60px;">Edit</a>
+                                                    <a href="#" class="btn btn-danger btn-xs no-margin-right" style="float:right; width:60px;" data-toggle="modal" data-target="#delete" style="cursor: pointer;" data-name="{{product.product_name}}" data-code="{{product.product_code}}" data-brand="{{product.product_brand}}" data-image="{{product.product_image}}" data-path="{{ path_for('admin-product-delete', {'product_id': product.product_id}) }}">Hapus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% else %}
+                                <div class="col-md-12 text-center">
+                                    <h2>Produk Tidak tersedia</h2>
+                                </div>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-md-2" style="">
+                            <div class="section">
+                                <div class="box hidden-sm hidden-xs row">
+                                    <div class="col-sm-12" style="padding: 5px">
+                                        <center><b>Kategori</b></center>
+                                        <div class="list-group">
+                                            {% for category in categories %}
+                                            <a class="list-group-item" role="button" data-toggle="collapse" href="#for{{category.category_name}}" aria-expanded="false" aria-controls="for{{category_name}}">
+                                                <span class="badge"><i class=" mdi mdi-plus"></i></span> {{category.category_name}}
+                                            </a>
+                                            <div class="list-group collapse" id="for{{category.category_name}}">
+                                                {% for category_child in category.category_child %}
+                                                <a href="{{ path_for('admin-product') }}/{{category_child.category_id}}" class="list-group-item " style="background:#f5f5f5">
+                                                    {{category_child.category_name}}
+                                                </a>
+                                                {% endfor %}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <!--                                            <a class="btn btn-primary col-md-12" data-toggle="modal" data-target="#category">Edit Kategori</a>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Apakah anda yakin untuk menghapus produk ini?</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+{{ parent() }}
+{% verbatim %}
+<script id="delete-template" type="x-tmpl-mustache">
+<ul class="media-list">
+    <li class="media media-cards">
+        <img class="pull-left" src="public/data/product/{{product_image}}" width="100">
+        <div class="media-body row">
+            <div class="col-md-6" style="height:110px;">
+                <h4 class="media-heading"><b>{{product_name}}</b></h4>
+                <h5 class="media-heading">{{product_code}}</h5>
+                <h5 class="media-heading"><b>{{product_brand}}</b></h5>
+            </div>
+        </div>
+    </li>
+</ul>
+<div class="modal-footer">
+    <a href="{{path}}" type="button" class="btn btn-danger">Delete</a>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</script>
+{% endverbatim %}
+<script>
+    $(function () {
+        var $affixElement = $('div[data-spy="affix"]');
+        $affixElement.width($affixElement.parent().width());
+
+    });
+    $('#preview').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var img = button.data('img');
+        var modal = $(this);
+        modal.find('.modal-body').html('<img src="public/data/product/' + img + '" width="100%">');
+    });
+    $('#delete').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        var template = $('#delete-template').html();
+        Mustache.parse(template);   // optional, speeds up future uses
+        var rendered = Mustache.render(template, {
+            product_name:button.data('name'),
+            product_code:button.data('code'),
+            product_brand:button.data('brand'),
+            product_image:button.data('image'),
+            path:button.data('path')
+        });
+        modal.find('.modal-body').html(rendered);
+
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header" style="width:10%;">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="{{root_path}}" class="navbar-brand"><img height="20" alt="Brand" src="public/assets/admin/img/logo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li style="padding-top:10px;">
+                    <img src="public/data/user/{{ user_detail.image }}" width="30" height="30">
+                </li>
+                <li class="active">
+                    <a href="account">Akun</a>
+                </li>
+                <li>
+                    <a href="logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

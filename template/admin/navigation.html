@@ -1,0 +1,34 @@
+<div class="col-md-2" style="">
+    <div class="section thick" data-spy="affix" data-offset-top="50">
+        <div class="box box-sidebar hidden-sm hidden-xs row">
+            <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
+                <img src="public/data/user/{{ user_detail.image }}" style="max-width:50%;width:50%;height:auto;">
+                <h3 class="text-capitalize">{{ user_detail.fullname }}</h3>
+                <h5 class="text-uppercase"><strong>{{ user_detail.permission }}</strong></h5>
+            </div>
+            <hr>
+            <div class="col-sm-12" style="padding: 5px">
+                <div class="list-group">
+                    <a href="admin/home" class="list-group-item {% if active == 'dashboard' %} active {% endif %}">
+                        Dashboard
+                    </a>
+                    <a href="{{ path_for('admin-product') }}" class="list-group-item {% if active == 'product' %} active {% endif %}">
+                        Product
+                    </a>
+                    <a href="{{ path_for('admin-article') }}" class="list-group-item {% if active == 'article' %} active {% endif %}">
+                        Artikel
+                    </a>
+                    <a href="admin/view/banner" class="list-group-item {% if active == 'banner' %} active {% endif %}">
+                        Banner
+                    </a>
+                    <a href="admin/view/user" class="list-group-item {% if active == 'user' %} active {% endif %}">
+                        <span class="badge">2</span> Pengguna
+                    </a>
+                    <a href="contact" class="list-group-item {% if active == 'contact' %} active {% endif %}">
+                        <span class="badge">3</span> Pesan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
