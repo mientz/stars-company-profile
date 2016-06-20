@@ -40,4 +40,14 @@ $app->group('/admin/users', function () {
             return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-users'));
         }
     })->setName('admin-users-moderation');
+
+    $this->get('/delete/{user_id}', function ($req, $res, $args) {
+        if(!isset($this->session->user_id)){
+            return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-login'));
+        }
+        $delete = $this->db->prepare("delete from user where user_id='".$args['user_id']."'");
+        if($delete->execute()){
+            return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-users'));
+        }
+    })->setName('admin-users-delete');
 })->add($user_detail);

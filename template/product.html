@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+{% include 'header.html' %}
+<br>
+<section id="advertisement">
+    <div class="container">
+        <img src="public/assets/front/img/advertisement.jpg" alt="">
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            {% include 'sidebar.html' %}
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Semua Produk</h2>
+                    {% for procut in products %}
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <a>
+                                    <div class="productinfo text-center">
+                                        <div class="image_product" style="width:100%; background:url('{{ path_for('home') }}public/data/product/{{procut.product_image}}') no-repeat center center; background-size:cover;"></div>
+
+                                        <h2>Rp. {{procut.product_price|number_format(0, ',', '.')}},-</h2>
+                                        <p>{{procut.product_brand}}</p>
+                                        <p><b>{{procut.product_name}}</b></p>
+                                    </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <p>Kode : {{procut.product_code}}</p>
+                                            <p>Bahan : {{procut.product_material}}</p>
+                                            <p>Warna : {{procut.product_color}}</p>
+                                            <p>Ukuran : {{procut.product_size}}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="choose">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li><a href="/product/detil/{{product_id}}"><i class="fa fa-expand"></i>Detil Produk</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!--features_items-->
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}
+{% endblock %}
+{% block js %}
+{{ parent() }}
+<script>
+    $(document).ready(function (){
+        $('.carousel-inner .item:first-child').addClass('active');
+        var width = $('.image_product').css('width');
+        $('.image_product').css('height', width);
+    });
+</script>
+{% endblock %}

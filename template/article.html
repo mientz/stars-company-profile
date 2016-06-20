@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+{% include 'header.html' %}
+<br>
+<section id="advertisement">
+    <div class="container">
+        <img src="public/assets/front/img/advertisement.jpg" alt="">
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            {% include 'sidebar.html' %}
+            <div class="col-sm-9 padding-right">
+                <div class="blog-post-area">
+                    <h2 class="title text-center">{{what_title}}</h2>
+                    {% for article in articles %}
+                    <div class="row" style="margin-bottom:3%">
+                        <div class="col-md-5 col-sm-5">
+                            <div class="image_product" style="width:100%; background:url('{{ path_for('home') }}public/data/article/{{article.article_image}}') no-repeat center center; background-size:cover;"></div>
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                            <p><b>{{article.article_title}}</b></p>
+                            <p><b>{{article.article_date|date("d M y")}}</b></p>
+                            <p class="text-par" style="width:100%; overflow: hidden; text-overflow: ellipsis;">
+                                {% autoescape 'html' %}
+                                {{article.article_text|striptags|slice(0, 300)|raw}}
+                                {% endautoescape %}
+                            </p>
+                            <p><a href="#">Lebih Lengkap ... </a></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}
+{% endblock %}
+{% block js %}
+{{ parent() }}
+<script>
+    $(document).ready(function (){
+        $('.carousel-inner .item:first-child').addClass('active');
+        var width = $('.image_product').css('width');
+        $('.image_product').css('height', width);
+    });
+</script>
+{% endblock %}

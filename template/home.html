@@ -1,54 +1,47 @@
 {% extends "base.html" %}
 {% block title %}
-Artikel
+Home
 {% endblock %}
-{% block body %}
-<section>
+{% block content %}
+{% include 'header.html' %}
+<section id="slider">
+    <!--slider-->
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="left-sidebar">
-                    <h2>Kategori</h2>
-                    <div class="panel-group category-products" id="accordian">
-                        <!--category-productsr-->
-                        {% for category in categories %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#for{{category.category_name}}">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        {{category.category_name}}
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="for{{category.category_name}}" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        {% for child in category.category_child %}
-                                        <li><a href="/product/search/">{{child.category_name}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% for banner in banners %}
+                        <li data-target="#slider-carousel" data-slide-to="{{loop.index0}}" class=""></li>
+                        {% endfor %}
+                    </ol>
+
+                    <div class="carousel-inner">
+                        {% for banner in banners %}
+                        <div class="item">
+                            <div class="col-sm-12">
+                                <center><img src="public/data/banner/{{banner.carousel_image}}" style="max-height:300px; height:300px;"></center>
                             </div>
                         </div>
                         {% endfor %}
                     </div>
-                    <!--/category-products-->
-                    <div class="price-range">
-                        <!--price-range-->
-                        <h2>Berita</h2>
-                    </div>
-                    <!--/price-range-->
 
-                    <div class="shipping text-center">
-                        <!--shipping-->
-                        <img src="public/assets/front/img/shipping.jpg" alt="">
-                    </div>
-                    <!--/shipping-->
-
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 </div>
-            </div>
 
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            {% include 'sidebar.html' %}
             <div class="col-sm-9 padding-right">
                 <div class="features_items">
                     <!--features_items-->
@@ -59,7 +52,7 @@ Artikel
                             <div class="single-products">
                                 <a>
                                     <div class="productinfo text-center"><img src="public/data/product/{{procut.product_image}}">
-                                        <h2>Rp. {{procut.product_price}},-</h2>
+                                        <h2>Rp. {{procut.product_price|number_format(0, ',', '.')}},-</h2>
                                         <p>{{procut.product_brand}}</p>
                                         <p><b>{{procut.product_name}}</b></p>
                                     </div>
@@ -96,27 +89,21 @@ Artikel
                         <div class="tab-pane fade active in" id="satu">
                             <div class="col-md-12 col-sm-12" style="margin-top:2%">
                                 <div class="col-md-6 col-sm-6">
-                                    <div class="">
-                                        <ul>
-                                            <li>
-                                                <table class="table" style="background:white">
-                                                    <tbody>
-                                                        {% for news in news %}
-                                                        <tr>
-                                                            <td>
-                                                                <div style="width:100px;height:60px;margin:1px 0;background:url({{ path_for('home') }}public/data/article/{{news.article_image}}) no-repeat scroll center top / 100% auto rgba(0, 0, 0, 0);"></div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="/article/detail/{{news.article_id}}">{{news.article_title}}</a><br>
-                                                                <div style="width:100%; margin-top:-1.5em; max-height:3em; height:3em; text-overflow:ellipsis; overflow: hidden;">{{article_text}}</div>
-                                                            </td>
-                                                        </tr>
-                                                        {% endfor %}
-                                                    </tbody>
-                                                </table>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <ul class="media-list">
+                                        {% for news in news %}
+                                        <li class="media">
+                                            <a href="{{news.article_id}}">
+                                                <div class="media-left media-middle">
+                                                    <div style="width:64px;height:64px;background:url({{ path_for('home') }}public/data/article/{{news.article_image}}) no-repeat center center; background-size:cover;"></div>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading" style="margin:0;">{{news.article_title}}</h4>
+                                                    <p class="text-capitalize" style="margin:0;">{{news.article_text|striptags|slice(0,100)|raw }}</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <center>
@@ -129,29 +116,23 @@ Artikel
                             </div>
                         </div>
                         <div class="tab-pane fade" id="dua">
-                            <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12" style="margin-top:2%">
                                 <div class="col-md-6 col-sm-6">
-                                    <div class="">
-                                        <ul>
-                                            <li>
-                                                <table class="table" style="background:white">
-                                                    <tbody>
-                                                        {{top-promo}}
-                                                        <tr>
-                                                            <td>
-                                                                <div style="width:100px;height:60px;margin:1px 0;background:url('/public/data/article/{{article_image}}') no-repeat scroll center top / 100% auto rgba(0, 0, 0, 0);"></div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="/article/detail/{{article_id}}">{{article_title}}</a><br>
-                                                                <div style="width:100%; margin-top:-1.5em; max-height:3em; height:3em; text-overflow:ellipsis; overflow: hidden;">{{article_text}}</div>
-                                                            </td>
-                                                        </tr>
-                                                        {{top-promo}}
-                                                    </tbody>
-                                                </table>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <ul class="media-list">
+                                        {% for news in promo %}
+                                        <li class="media">
+                                            <a href="{{news.article_id}}">
+                                                <div class="media-left media-middle">
+                                                    <div style="width:64px;height:64px;background:url({{ path_for('home') }}public/data/article/{{news.article_image}}) no-repeat center center; background-size:cover;"></div>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading" style="margin:0;">{{news.article_title}}</h4>
+                                                    <p style="margin:0;">{{news.article_text|striptags|slice(0,100)|raw }}</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <center>
@@ -169,9 +150,13 @@ Artikel
         </div>
     </div>
 </section>
+{% include 'footer.html' %}
 {% endblock %}
 {% block js %}
 {{ parent() }}
-{% verbatim %}
-{% endverbatim %}
+<script>
+    $(document).ready(function (){
+        $('.carousel-inner .item:first-child').addClass('active');
+    });
+</script>
 {% endblock %}

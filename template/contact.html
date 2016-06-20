@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+{% include 'header.html' %}
+<br>
+<section id="advertisement">
+    <div class="container">
+        <img src="public/assets/front/img/advertisement.jpg" alt="">
+    </div>
+</section>
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="contact-form">
+                    <h2 class="title text-center">Kenal Lebih Dekat</h2>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+                        <div class="form-group col-md-6">
+                            <input type="text" name="name" class="form-control" required="required" placeholder="Nama">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" name="email" class="form-control" required="required" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="text" name="subject" class="form-control" required="required" placeholder="Subyek">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Tulis Pesan Anda Disini"></textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="submit" name="submit" class="btn btn-primary pull-right" value="Kirim">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="contact-info">
+                    <h2 class="title text-center">Hubungi Sekarang</h2>
+                    <address>
+                        <p>Star</p>
+                        <p>Jalan Sudirman Nomor 10 Surabaya Indonesia</p>
+                        <p>Surabaya, Jawa Timur</p>
+                        <p>Mobile: (031) 1234 123</p>
+                        <p>Fax: (031) 1234 123</p>
+                        <p>Email: info@stars.co.id</p>
+                    </address>
+                    <div class="social-networks">
+                        <h2 class="title text-center">Social Networking</h2>
+                        <ul>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+{% endblock %}
+{% block js %}
+{{ parent() }}
+<script>
+    $(document).ready(function (){
+        $('.carousel-inner .item:first-child').addClass('active');
+        var width = $('.image_product').css('width');
+        $('.image_product').css('height', width);
+    });
+</script>
+{% endblock %}

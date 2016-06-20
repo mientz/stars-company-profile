@@ -9,9 +9,6 @@
             <hr>
             <div class="col-sm-12" style="padding: 5px">
                 <div class="list-group">
-                    <a href="admin/home" class="list-group-item {% if active == 'dashboard' %} active {% endif %}">
-                        Dashboard
-                    </a>
                     <a href="{{ path_for('admin-product') }}" class="list-group-item {% if active == 'product' %} active {% endif %}">
                         Product
                     </a>
@@ -20,6 +17,9 @@
                     </a>
                     <a href="{{ path_for('admin-banner') }}" class="list-group-item {% if active == 'banner' %} active {% endif %}">
                         Banner
+                    </a>
+                    <a href="{{ path_for('admin-gallery') }}" class="list-group-item {% if active == 'gallery' %} active {% endif %}">
+                        Gallery
                     </a>
                     {% if user_detail.permission == 'admin' %}
                     <a href="{{ path_for('admin-users') }}" class="list-group-item {% if active == 'user' %} active {% endif %}">

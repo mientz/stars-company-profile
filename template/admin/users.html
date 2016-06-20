@@ -60,7 +60,7 @@ Artikel
                                     <td class="group">{% if user.activated %}Aktif{% endif %}</td>
                                     <td class="permission">{{user.permission}}</td>
                                     <td class="text-right">
-                                        <a role="button"  data-toggle="modal" data-target="#moderasi" data-id="{{user.user_id}}" data-permission="{{user.permission}}" data-name="{{user.fullname}}" data-username="{{user.username}}" class="btn btn-primary btn-xs">Moderasi</a>
+                                        <a role="button"  data-toggle="modal" data-target="#moderasi" data-id="{{user.user_id}}" data-permission="{{user.permission}}" data-name="{{user.fullname}}" data-username="{{user.username}}" data-path="{{ path_for('admin-users-delete', {'user_id': user.user_id}) }}" class="btn btn-primary btn-xs">Moderasi</a>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -184,7 +184,7 @@ Artikel
         modal.find('#name').val(username)
         modal.find('#id').val(user_id)
         modal.find('#permission').val(permission)
-        modal.find('#remove').attr('href', 'removeaccount/'+user_id)
+        modal.find('#remove').attr('href', button.data('path'))
     })
 </script>
 {% endblock %}
