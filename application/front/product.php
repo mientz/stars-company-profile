@@ -18,7 +18,7 @@ $app->group('/product', function () {
     })->setName('product-with-category');
     $this->get('/brand/{brand}', function ($req, $res, $args) {
         return $this->view->render($res, 'product.html', [
-            'products'=>$this->db->query("select * from product where product_brand='".$args["category_id"]."'")->fetchAll(PDO::FETCH_ASSOC),
+            'products'=>$this->db->query("select * from product where product_brand='".$args["brand"]."'")->fetchAll(PDO::FETCH_ASSOC),
             'categories'=>$req->getAttribute('categories'),
             'brands'=>$this->db->query("select count(product_id) 'count', product_brand from product group by product_brand ORDER BY product_brand")
         ]);
