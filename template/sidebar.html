@@ -17,7 +17,7 @@
                     <div class="panel-body">
                         <ul>
                             {% for child in category.category_child %}
-                            <li><a href="/product/search/">{{child.category_name}}</a></li>
+                            <li><a href="{{ path_for('product-with-category', {'category_id': child.category_id}) }}">{{child.category_name}}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
