@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+{% include 'header.html' %}
+<br>
+<section id="advertisement">
+    <div class="container">
+        <img src="public/assets/front/img/advertisement.jpg" alt="">
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            {% include 'sidebar.html' %}
+            <div class="col-sm-9 padding-right">
+                <div class="col-sm-9 padding-right">
+                    <div class="product-details"><!--product-details-->
+                        <div class="col-sm-6">
+                            <div class="view-product">
+                                <img src="public/data/product/{{product.product_image}}" alt="">
+                                <h3>ZOOM</h3>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="product-information">
+                                <h2>{{product.product_name}}</h2>
+                                <p>Kode : {{product.product_code}}</p>
+                                <p>Merek : <b>{{product.product_brand}}</b></p>
+                                <p>Bahan : {{product.product_material}}</p>
+                                <p>Warna : {{product.product_color}}</p>
+                                <p>Ukuran : {{product.product_size}}</p>
+                                <p>Harga : Rp. <b class="text-warning">{{product.product_price|number_format(0, ',', '.')}}</b> ,-</p>
+                            </div><!--/product-information-->
+                        </div>
+                    </div><!--/product-details-->
+
+                    <div class="category-tab shop-details-tab"><!--category-tab-->
+                        <div class="col-sm-12">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#details" data-toggle="tab">Detil</a></li>
+                                <li class=""><a href="#reviews" data-toggle="tab">Lainnya</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="details">
+                                <div class="col-md-12 col-sm-12">
+                                    <div style="margin-left:2%;margin-right:2%;padding-bottom:0%">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="reviews">
+                                <div class="col-sm-12">
+                                    masih kosong<br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--features_items-->
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}
+{% endblock %}
+{% block js %}
+{{ parent() }}
+<script>
+    $(document).ready(function (){
+        $('.carousel-inner .item:first-child').addClass('active');
+        var width = $('.image_product').css('width');
+        $('.image_product').css('height', width);
+    });
+</script>
+{% endblock %}

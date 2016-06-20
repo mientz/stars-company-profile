@@ -23,4 +23,11 @@ $app->group('/product', function () {
             'brands'=>$this->db->query("select count(product_id) 'count', product_brand from product group by product_brand ORDER BY product_brand")
         ]);
     })->setName('product-with-brand');
+    $this->get('/detail/{product_id}', function ($req, $res, $args) {
+        return $this->view->render($res, 'product-detail.html', [
+            'product'=>$this->db->query("select * from product where product_id='".$args["product_id"]."'")->fetch(PDO::FETCH_ASSOC),
+            'categories'=>$req->getAttribute('categories'),
+            'brands'=>$this->db->query("select count(product_id) 'count', product_brand from product group by product_brand ORDER BY product_brand")
+        ]);
+    })->setName('product-detail');
 })->add($front_category);
