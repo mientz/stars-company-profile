@@ -20,7 +20,7 @@ $app->group('/admin/users', function () {
         $this->mailler->isHTML(true);
         $this->mailler->Subject = 'Undangan Akses Manajemen Website PT.STARS Indonesia';
         $this->mailler->Body = $this->view->render($res, 'email/email.html', [
-            'link'=>$this->get('settings')['server']."/".$this->router->pathFor('admin-register', ['email'=>$email]),
+            'link'=>$req->getUri()->getHost().$this->router->pathFor('admin-register', ['email'=>$email]),
         ]);
         if(!$this->mailler->send()) {
             $result["status"]='failed';
