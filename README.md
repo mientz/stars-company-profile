@@ -1,4 +1,7 @@
 # stars-company-profile
+
+#download https://github.com/mientz/stars-company-profile/archive/v2.0.zip
+
 ##### Penggunaan Aplikasi
 Username Super Admin : **admin**
 Password Super Admin : **admin**
