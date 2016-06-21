@@ -69,4 +69,7 @@ $app->group('/admin/register', function () {
         }
     })->setName('admin-register-check-username');
 
+
+
+
 })->add($user_detail);

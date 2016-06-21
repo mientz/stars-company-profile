@@ -6,105 +6,106 @@ Artikel
 {% include 'admin/header.html' %}
 <div class="section avoid-navbar">
     <div class="container">
-        <!--[if lt IE 9]>
-<div class="alert alert-dismissible alert-warning" style="color:black;">
-<button type="button" class="close" data-dismiss="alert">×</button>
-<h4>Browser Anda Tidak Disupport !!</h4>
-<p>Browser anda terlalu
-<strong>Tua</strong>dan tidak mendukung secara maksimal fitur dari
-<strong>HTML5</strong>, silahkan menggunakan browser terbaru atau gunakan browser
-<strong>Google Chrome, Mozila Firefox, Opera atau Safari</strong>demi kemyamanan
-anda menggunakan aplikasi ini.</p>
-<p>Beberapa fitur tidak dapat ditampilkan secara maksimal jika anda tetap
-menggunakan browser ini</p>
-</div>
-<![endif]-->
-        <div class="row box">
-            <div class="col-md-3 col-sm-4 col-xs-12" style="padding-top:10px;">
-                <legend>Foto</legend>
-                <div class="col-xs-12" style="background-color: #f7f7f7; padding-top:20px;">
-                    <img src="public/data/user/{{user_detail.image}}" style="max-width:100%;width:100%;height:auto;">
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-12" style="background-color: #f7f7f7; padding-top:10px;">
-                        <button class="btn btn-primary btn-group col-sm-12">Ganti Foto</button>
+        <form method="post" enctype="multipart/form-data">
+            <div class="row box">
+                <div class="col-md-3 col-sm-4 col-xs-12" style="padding-top:10px;">
+                    <legend>Foto</legend>
+                    <div class="col-xs-12" style="background-color: #f7f7f7; padding-top:20px;">
+                        <img id="viewer" src="public/data/user/{{user_detail.image}}" style="max-width:100%;width:100%;height:auto;">
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12" style="background-color: #f7f7f7; padding-top:10px;">
+                            <input type="file" name="product_image" onchange="loadname(this,'viewer');">
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="background-color: #f7f7f7; ">
+                        <p class="text-muted text-center"><small>Besar file maksimal <strong>2 MB</strong>, Ekstensi yang diperbolehkan: <strong>.JPG .JPEG .GIF .PNG</strong></small></p>
                     </div>
                 </div>
-                <div class="col-sm-12" style="background-color: #f7f7f7; ">
-                    <p class="text-muted text-center"><small>Besar file maksimal <strong>2 MB</strong>, Ekstensi yang diperbolehkan: <strong>.JPG .JPEG .GIF .PNG</strong></small></p>
+                <div class="col-md-9 col-sm-8 col-xs-12" style="padding-top:10px;">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <legend>Biodata</legend>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <label for="inputEmail3" class="control-label">Username</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control no-radius lightblack-border" id="inputEmail3" value="{{user_detail.username}}" tabindex="1" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <label for="inputEmail3" class="control-label">Nama Lengkap</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control no-radius lightblack-border" name="fullname" id="inputEmail3" value="{{user_detail.fullname}}" tabindex="2">
+                                </div>
+                            </div>
+                            <legend>Kontak</legend>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <label for="inputPassword3" class="control-label">Email</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control no-radius lightblack-border" id="inputPassword3" value="{{user_detail.email}}" tabindex="3" {% if not ganti_email %}readonly{% endif %}>
+                                </div>
+                            </div>
+                            <legend>Keamanan</legend>
+                            {% if error_password %}
+                            <div class="alert alert-dismissible alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Penggantian Password Gagal</strong> {{error_password}}
+                            </div>
+                            {% endif %}
+                            {% if success_password %}
+                            <div class="alert alert-dismissible alert-success">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Penggantian Password Berhasil !</strong> {{error_password}}
+                            </div>
+                            {% endif %}
+                            <div class="form-group" id="changepassword">
+                                <div class="col-sm-2">
+                                    <label for="inputPassword3" class="control-label">Password</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control no-radius lightblack-border" id="inputPassword3" value="{{user_detail.password}}" tabindex="4" readonly>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button data-toggle="modal" data-target="#gantipassword" data-id="{{user_detail.user_id}}" class="btn btn-primary btn-group col-sm-12">Ganti Password</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <label for="inputPassword3" class="control-label">Hak Akses</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control no-radius lightblack-border" id="inputPassword3" value="{{user_detail.permission}}" tabindex="5" readonly>
+                                </div>
+                            </div>
+                            {% if success_save %}
+                            <div class="alert alert-dismissible alert-success">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>perubahan Berhasil !</strong> {{error_password}}
+                            </div>
+                            {% endif %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>&nbsp;
+                                    <a href="{{ path_for('admin-login') }}" class="btn btn-default">Batal</a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-9 col-sm-8 col-xs-12" style="padding-top:10px;">
-                <div class="form-horizontal">
-                    <fieldset>
-                        <legend>Biodata</legend>
-                        <div class="form-group">
-                            <div class="col-sm-2">
-                                <label for="inputEmail3" class="control-label">Username</label>
-                            </div>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control no-radius lightblack-border" id="inputEmail3" value="{{user_detail.username}}" tabindex="1" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-2">
-                                <label for="inputEmail3" class="control-label">Nama Lengkap</label>
-                            </div>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control no-radius lightblack-border" id="inputEmail3" value="{{user_detail.fullname}}" tabindex="2">
-                            </div>
-                        </div>
-                        <legend>Kontak</legend>
-                        <div class="form-group">
-                            <div class="col-sm-2">
-                                <label for="inputPassword3" class="control-label">Email</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="email" class="form-control no-radius lightblack-border" id="inputPassword3" value="{{user_detail.email}}" tabindex="3" readonly>
-                            </div>
-                            <div class="col-sm-2">
-                                <button data-toggle="modal" data-target="#promptpassword" data-id="{{users.user_id}}" data-field="email" class="btn btn-primary btn-group col-sm-12">Ganti Email</button>
-                            </div>
-                        </div>
-                        <legend>Keamanan</legend>
-                        <div class="form-group" id="changepassword">
-                            <div class="col-sm-2">
-                                <label for="inputPassword3" class="control-label">Password</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="password" class="form-control no-radius lightblack-border" id="inputPassword3" value="{{user_detail.password}}" tabindex="4" readonly>
-                            </div>
-                            <div class="col-sm-2">
-                                <button data-toggle="modal" data-target="#gantipassword" data-id="{{user_detail.user_id}}" class="btn btn-primary btn-group col-sm-12">Ganti Password</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-2">
-                                <label for="inputPassword3" class="control-label">Hak Akses</label>
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control no-radius lightblack-border" id="inputPassword3" value="{{user_detail.permission}}" tabindex="5" readonly>
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-primary btn-group col-sm-12">Ganti Hak</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>&nbsp;
-                                <a class="btn btn-default">Batal</a>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 <div class="modal fade" id="gantipassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form method="post" action="account/changepassword" id="modalpassword">
+            <form method="post" id="modalpassword">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Ganti Password</h4>
@@ -115,28 +116,28 @@ menggunakan browser ini</p>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-lg-2 control-label">Password Lama</label>
                                 <div class="col-lg-10">
-                                    <input type="password" class="form-control" name="oldpassword" id="oldpassword" data-min="1" required>
+                                    <input type="password" class="form-control lvalid" name="oldpassword" id="oldpassword" data-min="6" required>
                                     <input type="hidden" class="form-control" name="id" id="id" value="{{users.user_id}}">
                                 </div>
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-10">
                                     <!--                                            <p class="help-block text-{{email.type}}"><small>{{email.message}}</small></p>-->
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-lg-2 control-label">Password Baru</label>
                                 <div class="col-lg-10">
-                                    <input type="password" class="form-control lvalid" name="newpassword" data-min="6" id="newpassword" required>
+                                    <input type="password" class="form-control lvalid  exvalid-password" name="newpassword" data-min="6" id="newpassword" required>
                                 </div>
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-10">
                                     <!--                                            <p class="help-block text-{{email.type}}"><small>{{email.message}}</small></p>-->
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-lg-2 control-label">Ulangi Password</label>
                                 <div class="col-lg-10">
-                                    <input type="password" class="form-control lvalid" name="repassword" data-min="6" id="repassword" required>
+                                    <input type="password" class="form-control lvalid  exvalid-repassword" name="repassword" data-min="6" id="repassword" required>
                                 </div>
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-10">
                                     <!--                                            <p class="help-block text-{{email.type}}"><small>{{email.message}}</small></p>-->
                                 </div>
                             </div>
@@ -144,40 +145,8 @@ menggunakan browser ini</p>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                    <button type="button" name="changepassword" class="btn btn-default" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="promptpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form method="post" action="account/changepassword" id="askpassword">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Password Akun</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-horizontal">
-                        <fieldset>
-                            <div class="form-group">
-                                <label for="inputEmail" class="col-lg-2 control-label">Password</label>
-                                <div class="col-lg-10">
-                                    <input type="password" class="form-control" name="password" id="passfield" data-min="1" required>
-                                    <input type="hidden" class="form-control" name="id" id="id" value="{{users.user_id}}">
-                                </div>
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <!--                                            <p class="help-block text-{{email.type}}"><small>{{email.message}}</small></p>-->
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">OK</button>
                 </div>
             </form>
         </div>
@@ -187,5 +156,59 @@ menggunakan browser ini</p>
 {% block js %}
 {{ parent() }}
 {% verbatim %}
+
+<script id="validation" type="x-tmpl-mustache">
+            <p class="help-block text-{{type}}"><small>{{message}}</small></p>
+</script>
 {% endverbatim %}
+<script>
+    $('.lvalid').on('keyup', function(){
+        var parent = $(this).parent();
+        var messaging = parent.next();
+        var value = $(this).val();
+        var vlength = $(this).val().length;
+        if(vlength < $(this).data('min') && vlength != 0){
+            var validation = $('#validation').html();
+            Mustache.parse(validation);   // optional, speeds up future uses
+            var rendered = Mustache.render(validation, {type: "danger", message: "Minimal "+$(this).data('min')+" karakter" });
+            messaging.html(rendered);
+        }else if(vlength >= $(this).data('min') && vlength != 0){
+            messaging.html('');
+        }else{
+            messaging.html('');
+        }
+    });
+    $('.exvalid-repassword').on('focusout', function(){
+        var parent = $(this).parent();
+        var messaging = parent.next();
+        var value = $(this).val();
+        var password = $('.exvalid-password').val();
+        if(value != password){
+            var validation = $('#validation').html();
+            Mustache.parse(validation);   // optional, speeds up future uses
+            var rendered = Mustache.render(validation, {type: "danger", message: "Password tidak sama !!" });
+            messaging.html(rendered);
+        }else{
+            messaging.html('');
+        }
+    });
+
+    function loadname(img, previewName){
+
+        var isIE = (navigator.appName=="Microsoft Internet Explorer");
+        var path = img.value;
+        var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();
+        if(isIE) {
+            $('#'+ previewName).replaceWith('<img width="100%" src="'+path+'">');
+        }else{
+            if (img.files[0]){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#'+ previewName).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(img.files[0]);
+            }
+        }
+    }
+</script>
 {% endblock %}

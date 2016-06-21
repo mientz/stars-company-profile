@@ -12,9 +12,9 @@ $container['db'] = function ($c) {
 
 // twig templating container
 $container['view'] = function ($container) {
-    $view = new \Slim\Views\Twig('template'/*, [
+    $view = new \Slim\Views\Twig('template', [
         'cache' => 'template/cache'
-    ]*/);
+    ]);
     $view->addExtension(new \Slim\Views\TwigExtension(
         $container['router'],
         $container['request']->getUri()

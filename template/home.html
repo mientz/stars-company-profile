@@ -92,7 +92,7 @@ Home
                                     <ul class="media-list">
                                         {% for news in news %}
                                         <li class="media">
-                                            <a href="{{news.article_id}}">
+                                            <a href="{{ path_for('news') }}">
                                                 <div class="media-left media-middle">
                                                     <div style="width:64px;height:64px;background:url({{ path_for('home') }}public/data/article/{{news.article_image}}) no-repeat center center; background-size:cover;"></div>
                                                 </div>
@@ -121,7 +121,7 @@ Home
                                     <ul class="media-list">
                                         {% for news in promo %}
                                         <li class="media">
-                                            <a href="{{news.article_id}}">
+                                            <a href="{{ path_for('promo') }}">
                                                 <div class="media-left media-middle">
                                                     <div style="width:64px;height:64px;background:url({{ path_for('home') }}public/data/article/{{news.article_image}}) no-repeat center center; background-size:cover;"></div>
                                                 </div>

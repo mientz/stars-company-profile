@@ -47,11 +47,11 @@ Pesan Pengunjung
                                         <td>{{contact.contact_subject}}</td>
                                         <td>{{contact.contact_name}}</td>
                                         <td>{{contact.contact_email}}</td>
-                                        <td>{{contact.contact_date}}</td>
+                                        <td>{{contact.contact_date|date("d M Y H:i")}}</td>
                                         <td>
                                             <div class="btn-group" style="float:right;">
-                                                <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#read" data-backdrop="false" data-title="{{contact.contact_subject}}" data-name="{{contact.contact_name}}" data-email="{{contact.contact_email}}" data-messages="{{contact.contact_messages}}" data-date="{{contact.contact_date}}" data-path="{{ path_for('admin-contact-read', {'contact_id': contact.contact_id}) }}"><i class="mdi mdi-book-open"></i></a>
-                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete"  data-title="{{contact.contact_subject}}" data-name="{{contact.contact_name}}" data-email="{{contact.contact_email}}" data-messages="{{contact.contact_messages}}" data-date="{{contact.contact_date}}" data-path="{{ path_for('admin-contact-delete', {'contact_id': contact.contact_id}) }}"><i class="mdi mdi-delete"></i></a>
+                                                <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#read" data-backdrop="false" data-title="{{contact.contact_subject}}" data-name="{{contact.contact_name}}" data-email="{{contact.contact_email}}" data-messages="{{contact.contact_messages}}" data-date="{{contact.contact_date|date("d M Y H:i")}}" data-path="{{ path_for('admin-contact-read', {'contact_id': contact.contact_id}) }}"><i class="mdi mdi-book-open"></i></a>
+                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete"  data-title="{{contact.contact_subject}}" data-name="{{contact.contact_name}}" data-email="{{contact.contact_email}}" data-messages="{{contact.contact_messages}}" data-date="{{contact.contact_date|date("d M Y H:i")}}" data-path="{{ path_for('admin-contact-delete', {'contact_id': contact.contact_id}) }}"><i class="mdi mdi-delete"></i></a>
                                             </div>
                                         </td>
                                     </tr>

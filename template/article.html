@@ -22,15 +22,24 @@ Home
                         <div class="col-md-5 col-sm-5">
                             <div class="image_product" style="width:100%; background:url('{{ path_for('home') }}public/data/article/{{article.article_image}}') no-repeat center center; background-size:cover;"></div>
                         </div>
-                        <div class="col-md-7 col-sm-7">
+                        <div class="col-md-7 col-sm-7" id="accordion" role="tablist">
                             <p><b>{{article.article_title}}</b></p>
-                            <p><b>{{article.article_date|date("d M y")}}</b></p>
-                            <p class="text-par" style="width:100%; overflow: hidden; text-overflow: ellipsis;">
-                                {% autoescape 'html' %}
-                                {{article.article_text|striptags|slice(0, 300)|raw}}
-                                {% endautoescape %}
+                            <p><b>{{article.article_date|date("d M y h:m")}}</b></p>
+                            <div class="collapse in" id="col-top-{{article.article_id}}" role="tabpanel">
+                                <p class="text-par" style="width:100%; overflow: hidden; text-overflow: ellipsis;">
+                                    {% autoescape 'html' %}
+                                    {{article.article_text|striptags|slice(0, 300)|raw}}
+                                    {% endautoescape %}
+                                </p>
+                            </div>
+                            <div class="collapse article" id="col-bottom-{{article.article_id}}" role="tabpanel" data-top="col-top-{{article.article_id}}" data-button="button-{{article.article_id}}">
+                                <p class="text-par" style="width:100%; overflow: hidden; text-overflow: ellipsis;">
+                                    {{article.article_text|raw}}
+                                </p>
+                            </div>
+                            <p>
+                                <a id="button-{{article.article_id}}" class="btn btn-primary" role="button" data-toggle="collapse" data-parent="#accordion" href="#col-bottom-{{article.article_id}}" aria-expanded="false" aria-controls="col-bottom-{{article.article_id}}">Lebih Lengkap ... </a>
                             </p>
-                            <p><a href="#">Lebih Lengkap ... </a></p>
                         </div>
                     </div>
                     {% endfor %}
@@ -48,6 +57,18 @@ Home
         $('.carousel-inner .item:first-child').addClass('active');
         var width = $('.image_product').css('width');
         $('.image_product').css('height', width);
+    });
+    $('.article').on('show.bs.collapse', function () {
+        var top = $(this).data('top');
+        var button = $(this).data('button');
+        $('#'+button).html('Lebih Sedikit ...')
+        $("#"+top).collapse('hide');
+    });
+    $('.article').on('hide.bs.collapse', function () {
+        var top = $(this).data('top');
+        var button = $(this).data('button');
+        $('#'+button).html('Lebih Lengkap ...')
+        $("#"+top).collapse('show');
     });
 </script>
 {% endblock %}
