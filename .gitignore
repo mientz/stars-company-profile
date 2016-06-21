@@ -5,3 +5,5 @@
 /node_modules/
 /public/ckeditor/
 /settings.php
+/ngrok.exe
+/template/cache/
