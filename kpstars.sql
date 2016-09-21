@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2016 at 10:17 AM
+-- Generation Time: Sep 21, 2016 at 05:08 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -43,7 +43,8 @@ CREATE TABLE `article` (
 INSERT INTO `article` (`article_id`, `article_title`, `article_date`, `article_text`, `article_image`, `article_status`, `article_type`) VALUES
 (5, 'PROMO â€“ BELI 1 DAPAT 2 KHUSUS SEPATU & SANDAL WANITA', '2016-06-17 01:32:07', '<p><span style="background-color:rgb(255, 255, 255); color:rgb(119, 119, 119); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:15px">Dapatkan Penawaran Khusus Untuk Produk Sepatu dan Sandal Wanita &ndash; Beli 1 dapat 2.</span></p>\r\n\r\n<div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>\r\n\r\n<p><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(119, 119, 119); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:15px">Syarat :</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(119, 119, 119); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:15px">&ndash;&nbsp; Membeli 1 pasang sandal/sepatu mendapat Gratis 1 pasang sandal/sepatu Re-Grouping</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(119, 119, 119); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:15px">&ndash;&nbsp; Harga produk hadiah maksimal seharga produk yang dibeli</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(119, 119, 119); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:15px">&ndash;&nbsp; Produk hadiah yang dipilih sesuai daftar hadiah yang tersedia ditoko pembelian</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(119, 119, 119); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:15px">&ndash;&nbsp; Berlaku selama persediaan masih ada di toko pembelian</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(119, 119, 119); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:15px">&ndash;&nbsp; Periode Promo : 13 April s/d 13 Juni 2015</span><br />\r\n<span style="background-color:rgb(255, 255, 255); color:rgb(119, 119, 119); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:15px">&ndash; &nbsp;Berlaku di semua Jaringan Toko STARS</span></p>\r\n', 'product-promobeli1dapat2khusussepatusandalwanita--2016-06-19-09-15-40-.jpg', '', 'promo'),
 (6, 'Rp 1000,00 dapat sepatu', '2016-06-17 01:36:15', '<h1><span style="font-size:10px">hanya membayar <span style="font-family:times new roman,times,serif"><q><u><em><strong>Rp 1000 </strong></em></u></q></span>sudah bisa mendapatkan sepatu yang sanat bagus dengan syarat tertentu</span></h1>\r\n', 'product-rp100000dapatsepatu--2016-06-20-00-48-18-.png', '', 'promo'),
-(7, 'Tips Sehat Selama Puasa Ramadhan', '2016-06-19 05:16:45', '<p>Bulan Ramadhan telah tiba, di mana seluruh umat muslim diwajibkan untuk berpuasa, menahan lapar dan haus selama kurang lebih 12 jam, selama sebulan penuh. Walaupun begitu,&nbsp;<a href="http://webkesehatan.com/manfaat-puasa-ramadhan/">puasa memiliki banyak manfaat bagi kesehatan</a>, tentu jika dijalankan dengan cara yang sehat pula.</p>\r\n\r\n<hr />\r\n<p>Berpuasa di siang hari tidak lantas menjadikan tubuh menjadi lesu. Pola makan yang berubah selama Bulan Puasa harus disiasati dengan benar agar tubuh tetap sehat dan bugar dalam menjalankan aktifitas di siang hari. Terlebih lagi, setelah melewati Ramadhan, selain menjadi lebih dekat kepada Allah, kita juga menjadi individu yang lebih sehat daripada sebelumnya.</p>\r\n\r\n<p>Berikut adalah beberapa&nbsp;tips sehat selama Bulan Puasa Ramadhan:</p>\r\n\r\n<h3>Tips Puasa Ramadhan: Makan Sahur</h3>\r\n\r\n<p>1. Atur waktu anda untuk menyantap sahur di akhir waktu. Selain berguna untuk menunjang puasa anda di siang hari, makan sahur di akhir waktu lebih diutamakan berdasarkan sunnah Rasul.</p>\r\n\r\n<p>2. Makanlah dengan porsi normal, jangan berlebihan. Fokuslah untuk mengkonsumsi makanan yang kaya akan karbohidrat kompleks dan protein, serta buah dan sayuran. Menyantap makanan yang mengandung banyak air selama sahur juga sangat baik untuk hidrasi tubuh anda sepanjang hari.</p>\r\n\r\n<p>3. Akhiri santap sahur dengan segelas susu untuk melengkapi nutrisi tubuh anda. Minumlah suplemen ataupun multivitamin yang biasa anda konsumsi ataupun yang disarankan oleh dokter anda.</p>\r\n\r\n<p>4. Batasi konsumsi makanan yang terlalu manis dan mengandung banyak gula, karena justru dapat membuat tubuh lemas di siang hari.</p>\r\n\r\n<p>5. Minum air yang cukup. Sebelum waktu imsak tiba, minumlah air yang cukup, tiga hingga lima gelas. Sebaiknya hindari minuman berkafein seperti kopi dan teh karena bersifat diuretik dan membuat tubuh kehilangan cairan lebih cepat melalui urinasi.</p>\r\n\r\n<h3>Tips Puasa Ramadhan: Selama Berpuasa</h3>\r\n\r\n<p>6. Di waktu terpanas di siang hari, hindari berlama-lama di terik matahari dan kurangi aktifitas fisik.</p>\r\n\r\n<p>7. Jika ada waktu, sempatkan untuk mengistirahatkan tubuh anda, dan mengganti waktu tidur yang kurang karena bangun lebih awal untuk sahur. Waktu setelah sholat zuhur merupakan saat yang tepat untuk beristirahat.</p>\r\n\r\n<p>8. Jika memiliki waktu luang di sore hari, sempatkan untuk berolahraga ringan seperti jalan sore, bersepeda santai, ataupun yoga. Hal ini sangat baik untuk menjaga kebubagaran tubuh dan memperlancar peredaran darah.</p>\r\n\r\n<h3>Tips Puasa Ramadhan: Buka Puasa</h3>\r\n\r\n<p>Saat waktu buka puasa tiba, jangan makan dengan berlebihan. Sebaiknya ikuti sunnah, yaitu dengan<a href="http://webkesehatan.com/kandungan-kurma-manfaat-kurma/">buah kurma</a>&nbsp;dan minuman yang manis: bisa dengan susu, jus buah, atauapun sekedar air. Minumlah cukup air untuk mengganti cairan tubuh yang hilang selama berpuasa.</p>\r\n\r\n<p>9. Kurma kering, baik untuk berbuka</p>\r\n\r\n<p>Baca juga:&nbsp;<a href="http://webkesehatan.com/manfaat-kurma-buka-puasa/">Manfaat kurma untuk berbuka puasa</a></p>\r\n\r\n<p>10. Setelah magrib, lanjutkan dengan menyantap hidangan utama, dengan menu yang seimbang. Makanlah sesuai dengan porsi anda yang biasa, tidak perlu berlebihan. Cukupkan dengan karbohidrat, protein, serta sayuran dan buah-buahan.</p>\r\n\r\n<p>11. Hindari makan gorengan berlebihan, serta batasi makanan yang pedas, agar perut tidak menjadi mules dan mengganggu pencernaan tubuh anda.</p>\r\n\r\n<p>12. Cukupi asupan air tubuh anda. Usahakan untuk meminum setidaknya lima gelas air putih sebelum tidur.</p>\r\n', 'product-tipssehatselamapuasaramadhan--2016-06-19-09-17-48-.jpg', '', 'news');
+(7, 'Tips Sehat Selama Puasa Ramadhan', '2016-06-19 05:16:45', '<p>Bulan Ramadhan telah tiba, di mana seluruh umat muslim diwajibkan untuk berpuasa, menahan lapar dan haus selama kurang lebih 12 jam, selama sebulan penuh. Walaupun begitu,&nbsp;<a href="http://webkesehatan.com/manfaat-puasa-ramadhan/">puasa memiliki banyak manfaat bagi kesehatan</a>, tentu jika dijalankan dengan cara yang sehat pula.</p>\r\n\r\n<hr />\r\n<p>Berpuasa di siang hari tidak lantas menjadikan tubuh menjadi lesu. Pola makan yang berubah selama Bulan Puasa harus disiasati dengan benar agar tubuh tetap sehat dan bugar dalam menjalankan aktifitas di siang hari. Terlebih lagi, setelah melewati Ramadhan, selain menjadi lebih dekat kepada Allah, kita juga menjadi individu yang lebih sehat daripada sebelumnya.</p>\r\n\r\n<p>Berikut adalah beberapa&nbsp;tips sehat selama Bulan Puasa Ramadhan:</p>\r\n\r\n<h3>Tips Puasa Ramadhan: Makan Sahur</h3>\r\n\r\n<p>1. Atur waktu anda untuk menyantap sahur di akhir waktu. Selain berguna untuk menunjang puasa anda di siang hari, makan sahur di akhir waktu lebih diutamakan berdasarkan sunnah Rasul.</p>\r\n\r\n<p>2. Makanlah dengan porsi normal, jangan berlebihan. Fokuslah untuk mengkonsumsi makanan yang kaya akan karbohidrat kompleks dan protein, serta buah dan sayuran. Menyantap makanan yang mengandung banyak air selama sahur juga sangat baik untuk hidrasi tubuh anda sepanjang hari.</p>\r\n\r\n<p>3. Akhiri santap sahur dengan segelas susu untuk melengkapi nutrisi tubuh anda. Minumlah suplemen ataupun multivitamin yang biasa anda konsumsi ataupun yang disarankan oleh dokter anda.</p>\r\n\r\n<p>4. Batasi konsumsi makanan yang terlalu manis dan mengandung banyak gula, karena justru dapat membuat tubuh lemas di siang hari.</p>\r\n\r\n<p>5. Minum air yang cukup. Sebelum waktu imsak tiba, minumlah air yang cukup, tiga hingga lima gelas. Sebaiknya hindari minuman berkafein seperti kopi dan teh karena bersifat diuretik dan membuat tubuh kehilangan cairan lebih cepat melalui urinasi.</p>\r\n\r\n<h3>Tips Puasa Ramadhan: Selama Berpuasa</h3>\r\n\r\n<p>6. Di waktu terpanas di siang hari, hindari berlama-lama di terik matahari dan kurangi aktifitas fisik.</p>\r\n\r\n<p>7. Jika ada waktu, sempatkan untuk mengistirahatkan tubuh anda, dan mengganti waktu tidur yang kurang karena bangun lebih awal untuk sahur. Waktu setelah sholat zuhur merupakan saat yang tepat untuk beristirahat.</p>\r\n\r\n<p>8. Jika memiliki waktu luang di sore hari, sempatkan untuk berolahraga ringan seperti jalan sore, bersepeda santai, ataupun yoga. Hal ini sangat baik untuk menjaga kebubagaran tubuh dan memperlancar peredaran darah.</p>\r\n\r\n<h3>Tips Puasa Ramadhan: Buka Puasa</h3>\r\n\r\n<p>Saat waktu buka puasa tiba, jangan makan dengan berlebihan. Sebaiknya ikuti sunnah, yaitu dengan<a href="http://webkesehatan.com/kandungan-kurma-manfaat-kurma/">buah kurma</a>&nbsp;dan minuman yang manis: bisa dengan susu, jus buah, atauapun sekedar air. Minumlah cukup air untuk mengganti cairan tubuh yang hilang selama berpuasa.</p>\r\n\r\n<p>9. Kurma kering, baik untuk berbuka</p>\r\n\r\n<p>Baca juga:&nbsp;<a href="http://webkesehatan.com/manfaat-kurma-buka-puasa/">Manfaat kurma untuk berbuka puasa</a></p>\r\n\r\n<p>10. Setelah magrib, lanjutkan dengan menyantap hidangan utama, dengan menu yang seimbang. Makanlah sesuai dengan porsi anda yang biasa, tidak perlu berlebihan. Cukupkan dengan karbohidrat, protein, serta sayuran dan buah-buahan.</p>\r\n\r\n<p>11. Hindari makan gorengan berlebihan, serta batasi makanan yang pedas, agar perut tidak menjadi mules dan mengganggu pencernaan tubuh anda.</p>\r\n\r\n<p>12. Cukupi asupan air tubuh anda. Usahakan untuk meminum setidaknya lima gelas air putih sebelum tidur.</p>\r\n', 'product-tipssehatselamapuasaramadhan--2016-06-19-09-17-48-.jpg', '', 'news'),
+(8, 'promosi ramadhan', '2016-06-21 10:25:34', '<p>promosi awal dengan pt pos</p>\r\n', 'article-promosiramadhan--2016-06-21-10-25-34-.JPG', '', 'promo');
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,8 @@ INSERT INTO `carousel` (`carousel_id`, `carousel_status`, `carousel_created`, `c
 (7, 'visible', '2016-06-17 01:05:56', 'banner--2016-06-17-13-05-56-.png'),
 (8, 'visible', '2016-06-17 01:06:58', 'banner--2016-06-17-13-06-58-.jpg'),
 (9, 'visible', '2016-06-17 01:07:32', 'banner--2016-06-17-13-07-32-.png'),
-(10, 'visible', '2016-06-19 10:00:16', 'banner-2016-06-19-10-00-16.jpg');
+(10, 'visible', '2016-06-19 10:00:16', 'banner-2016-06-19-10-00-16.jpg'),
+(11, 'visible', '2016-06-21 10:25:58', 'banner-2016-06-21-10-25-58.JPG');
 
 -- --------------------------------------------------------
 
@@ -126,7 +128,8 @@ CREATE TABLE `contact` (
 INSERT INTO `contact` (`contact_id`, `contact_name`, `contact_city`, `contact_address`, `contact_email`, `contact_subject`, `contact_messages`, `contact_status`, `contact_date`) VALUES
 (1, 'Anwar', NULL, NULL, 'drak_nes@yahoo.com', 'hanya nyoba', 'Thank you for taking the time to meet with me and other representatives of the last week regarding the challenges facing public transportation, especially. We enjoyed meeting with you and . I’m glad we had the opportunity to discuss an issue that affects so many people in [city/state/community]. We especially appreciate your commitment to [describe any commitment made by the official]. The [coalition name] believes that public transportation is vital to quality of life of our community. As we discussed … Our coalition would greatly appreciate your support in ensuring that public transportation is widely available to all who need it – especially the people living in . On behalf of all our members and the thousands of citizens they represent, I want to thank you for taking the time out of your busy schedule to discuss this important matter.', 'read', '2016-06-20 03:47:13'),
 (4, 'rizal', NULL, NULL, 'evolkutionstarz@gmail.com', 'pesan', 'kerja praktek tester program', 'read', '2016-06-21 08:27:47'),
-(5, 'Aramand maulana', NULL, NULL, 'armand@maulana.com', 'perihal distribusi', 'apakah produk anda elah di distribusikan ke pasar timur indonesia, jika belu saya ingin bermitra menjadi distributor untuk wilayah pasar tersebut, mohon untuk mengirimkan informasi tentang perihal tersebut', 'unread', '2016-06-21 09:22:01');
+(5, 'Aramand maulana', NULL, NULL, 'armand@maulana.com', 'perihal distribusi', 'apakah produk anda elah di distribusikan ke pasar timur indonesia, jika belu saya ingin bermitra menjadi distributor untuk wilayah pasar tersebut, mohon untuk mengirimkan informasi tentang perihal tersebut', 'read', '2016-06-21 09:22:01'),
+(6, 'rizkiramadhanxx', NULL, NULL, 'rizkiramadhan@gmail', 'yahoo', 'google', 'read', '2016-06-21 10:34:53');
 
 -- --------------------------------------------------------
 
@@ -167,7 +170,8 @@ INSERT INTO `do_article` (`doarticle_id`, `user_id`, `article_id`, `doarticle_wh
 (28, 1, 5, 'edit', '2016-06-20 12:25:25'),
 (29, 1, 5, 'edit', '2016-06-20 12:37:30'),
 (30, 1, 6, 'edit', '2016-06-20 12:48:18'),
-(31, 1, 6, 'edit', '2016-06-20 02:15:44');
+(31, 1, 6, 'edit', '2016-06-20 02:15:44'),
+(32, 1, 8, 'add', '2016-06-21 10:25:34');
 
 -- --------------------------------------------------------
 
@@ -196,7 +200,8 @@ INSERT INTO `do_carousel` (`docarousel_id`, `user_id`, `carousel_id`, `docarouse
 (10, 1, 10, 'add', '2016-06-19 10:00:16'),
 (12, 1, 5, 'edit', '2016-06-19 10:25:48'),
 (13, 1, 5, 'edit', '2016-06-19 10:26:14'),
-(14, 1, 5, 'edit', '2016-06-19 10:26:15');
+(14, 1, 5, 'edit', '2016-06-19 10:26:15'),
+(15, 1, 11, 'add', '2016-06-21 10:25:58');
 
 -- --------------------------------------------------------
 
@@ -234,7 +239,8 @@ INSERT INTO `do_gallery` (`dogallery_id`, `user_id`, `gallery_id`, `dogallery_wh
 (2, 1, 2, 'add', '2016-06-20 03:27:10'),
 (3, 1, 3, 'add', '2016-06-20 03:33:13'),
 (4, 1, 4, 'add', '2016-06-20 03:33:20'),
-(5, 1, 5, 'add', '2016-06-20 03:33:41');
+(5, 1, 5, 'add', '2016-06-20 03:33:41'),
+(6, 1, 6, 'add', '2016-06-21 10:26:43');
 
 -- --------------------------------------------------------
 
@@ -284,7 +290,8 @@ INSERT INTO `do_product` (`doproduct_id`, `user_id`, `product_id`, `doproduct_wh
 (35, 1, 5, 'edit', '2016-06-19 03:58:59'),
 (36, 7, 5, 'edit', '2016-06-21 08:33:32'),
 (37, 7, 2, 'edit', '2016-06-21 08:33:43'),
-(38, 6, 9, 'edit', '2016-06-21 09:19:41');
+(38, 6, 9, 'edit', '2016-06-21 09:19:41'),
+(39, 1, 21, 'add', '2016-06-21 10:21:32');
 
 -- --------------------------------------------------------
 
@@ -307,7 +314,8 @@ INSERT INTO `gallery` (`gallery_id`, `gallery_name`, `gallery_file`, `gallery_up
 (2, '', 'article-24359--2016-06-20-03-27-10-.png', '2016-06-20 03:27:10'),
 (3, '', 'article-22859--2016-06-20-03-33-13-.jpg', '2016-06-20 03:33:13'),
 (4, '', 'article-3880--2016-06-20-03-33-20-.jpg', '2016-06-20 03:33:20'),
-(5, '', 'article-21569--2016-06-20-03-33-41-.jpg', '2016-06-20 03:33:41');
+(5, '', 'article-21569--2016-06-20-03-33-41-.jpg', '2016-06-20 03:33:41'),
+(6, '', 'article-22142--2016-06-21-10-26-43-.jpg', '2016-06-21 10:26:43');
 
 -- --------------------------------------------------------
 
@@ -351,7 +359,8 @@ INSERT INTO `product` (`product_id`, `product_code`, `product_name`, `product_br
 (17, 'SZ6835-481', '0612W BIRU HIJAU', 'Conae', 'Sintetis', 'Biru Hijau', '34-37', '189000', 0, 0, 'product-0612W BIRU HIJAU--2016-06-17-13-22-18-.jpg'),
 (18, 'SZ7912-581', 'GREY PURPLE', 'CONAE', 'Sintetis', 'PURPLE', '37-43', '209000', 0, 0, 'product-GREY PURPLE--2016-06-17-13-25-20-.jpg'),
 (19, 'SC1928-481', 'FROZEN', 'CONAE', 'Sintetis', 'Black Fushia', '36-40', '159000', 0, 0, 'product-FROZEN--2016-06-17-13-26-54-.jpg'),
-(20, 'SC7514-889', 'WOLVERINEGRY WHT', 'CONAE', 'PU', 'Blue Jeans', '38-43', '159000', 0, 0, 'product-WOLVERINEGRY WHT--2016-06-17-13-28-33-.jpg');
+(20, 'SC7514-889', 'WOLVERINEGRY WHT', 'CONAE', 'PU', 'Blue Jeans', '38-43', '159000', 0, 0, 'product-WOLVERINEGRY WHT--2016-06-17-13-28-33-.jpg'),
+(21, 'blk8976', 'stars', 'dragon', 'sintetyis', 'blak', '34-43', '189000', 0, 0, 'product-stars--2016-06-21-10-21-32-.jpg');
 
 -- --------------------------------------------------------
 
@@ -405,7 +414,9 @@ INSERT INTO `product_category` (`product_category_id`, `product_id`, `category_i
 (69, 2, 4),
 (70, 2, 5),
 (71, 9, 1),
-(72, 9, 2);
+(72, 9, 2),
+(73, 21, 8),
+(74, 21, 10);
 
 -- --------------------------------------------------------
 
@@ -433,7 +444,8 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `fullname`, `ima
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin.com', 'saya admin', 'no-photo.png', 1, 'admin', '2016-06-16 00:00:00'),
 (5, 'masterla', 'f04878fc9c0d6452eb8d6603371f2548', 'drak_nes@yahoo.com', 'yo', 'no-photo.png', 1, 'admin', '2016-06-19 20:03:18'),
 (6, 'mientz', 'f04878fc9c0d6452eb8d6603371f2548', 'genthowijaya@gmail.com', 'Ahmad', 'no-photo.png', 1, 'member', '2016-06-21 07:49:14'),
-(7, 'bigboss', '9eee50a12482f8adfc3b72fb6a06387e', 'rizalrachmady@gmail.com', 'mochamad rizal rachmadi', 'no-photo.png', 1, 'admin', '2016-06-21 08:29:45');
+(7, 'bigboss', '9eee50a12482f8adfc3b72fb6a06387e', 'rizalrachmady@gmail.com', 'mochamad rizal rachmadi', 'no-photo.png', 1, 'admin', '2016-06-21 08:29:45'),
+(8, 'rizkiramadhanxx', '9eee50a12482f8adfc3b72fb6a06387e', 'rizkiramadhanxx@gmail.com', 'rizkiramdhan', 'no-photo.png', 1, 'member', '2016-06-21 10:29:39');
 
 --
 -- Indexes for dumped tables
@@ -537,12 +549,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `carousel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `carousel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `category`
 --
@@ -552,17 +564,17 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `do_article`
 --
 ALTER TABLE `do_article`
-  MODIFY `doarticle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `doarticle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `do_carousel`
 --
 ALTER TABLE `do_carousel`
-  MODIFY `docarousel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `docarousel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `do_contact`
 --
@@ -572,32 +584,32 @@ ALTER TABLE `do_contact`
 -- AUTO_INCREMENT for table `do_gallery`
 --
 ALTER TABLE `do_gallery`
-  MODIFY `dogallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `dogallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `do_product`
 --
 ALTER TABLE `do_product`
-  MODIFY `doproduct_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `doproduct_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `product_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `product_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
