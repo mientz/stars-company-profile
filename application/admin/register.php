@@ -12,6 +12,8 @@ $app->group('/admin/register', function () {
         $repassword = $_POST['repassword'];
         $email = $_POST['email'];
         $name = $_POST['name'];
+		$md5pass = md5($password);
+		$last_login = date("Y-m-d H:i:s");
         $cek_username = $this->db->query("select count(user_id) from user where username='".$username."'")->fetchColumn();
         $cek_email = $this->db->query("select count(user_id) from user where email='".$email."'")->fetchColumn();
         if($cek_username == 0 && $cek_email == 0 && strlen($password) >= 6 && $repassword == $password){
@@ -21,10 +23,10 @@ $app->group('/admin/register', function () {
                 values(:username, :password, :email, :real_name, 'no-photo.png', '1', 'member', :last_login)"
             );
             $insert->bindParam(':username', $username, PDO::PARAM_STR);
-            $insert->bindParam(':password', md5($password), PDO::PARAM_STR);
+            $insert->bindParam(':password', $md5pass, PDO::PARAM_STR);
             $insert->bindParam(':email', $email, PDO::PARAM_STR);
             $insert->bindParam(':real_name', $name, PDO::PARAM_STR);
-            $insert->bindParam(':last_login', date("Y-m-d H:i:s"), PDO::PARAM_STR);
+            $insert->bindParam(':last_login', $last_login, PDO::PARAM_STR);
             if($insert->execute()){
                 return $this->view->render($res, 'admin/after-register.html', []);
             }
