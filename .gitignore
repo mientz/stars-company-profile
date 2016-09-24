@@ -3,7 +3,6 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
-/public/ckeditor/
 /settings.php
 /ngrok.exe
 /template/cache/
