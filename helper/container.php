@@ -12,9 +12,14 @@ $container['db'] = function ($c) {
 
 // twig templating container
 $container['view'] = function ($container) {
-    $view = new \Slim\Views\Twig('template', [
-        'cache' => 'template/cache'
-    ]);
+    $settings = $container->get('settings')['template'];
+    if ($settings['cache']) {
+        $view = new \Slim\Views\Twig('template', [
+            'cache' => $settings['cache_location']
+        ]);
+    }else{
+        $view = new \Slim\Views\Twig('template');
+    }
     $view->addExtension(new \Slim\Views\TwigExtension(
         $container['router'],
         $container['request']->getUri()

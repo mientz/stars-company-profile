@@ -10,5 +10,9 @@ return [
             "pass" => ""
         ],
         "server" => "192.168.100.8",
+        "template"=>[
+            "cache" => false,
+            "cache_location" => "template/cache"
+        ]
     ],
 ];
