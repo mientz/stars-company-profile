@@ -44,28 +44,55 @@
                                     <input type="text" id="occupation" class="form-control no-radius lightblack-border" name="product_code" placeholder="BLK0DRG6" tabindex="2" value="{{product_detail.product_code}}">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" data-toggle="tooltip" data-placement="top" title="Untuk menambahkan daftar merek produk tekan tombol edit">
                                 <div class="col-sm-3">
                                     <label for="inputPassword3" class="control-label">Merek Produk</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" id="occupation" class="form-control no-radius lightblack-border" name="product_brand" placeholder="BLK0DRG6" tabindex="3" value="{{product_detail.product_brand}}">
+                                    <div class="input-group">
+                                        <select class="form-control no-radius lightblack-border" name="product_brand" placeholder="KINGSTAR" tabindex="3">
+                                            {% for brand in brands %}
+                                            <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalMerek" data-type="Merek" data-url="{{ path_for('admin-brand') }}">Edit</button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" data-toggle="tooltip" data-placement="top" title="Untuk menambahkan daftar bahan produk tekan tombol edit">
                                 <div class="col-sm-3">
                                     <label for="inputPassword3" class="control-label">Bahan Produk</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control no-radius lightblack-border" name="product_material" placeholder="Karet Sintetis" tabindex="4" value="{{product_detail.product_material}}">
+                                    <div class="input-group">
+                                        <select class="form-control no-radius lightblack-border" name="product_material" placeholder="Karet Sintetis" tabindex="4">
+                                            {% for material in materials %}
+                                            <option value="{{material.material_id}}">{{material.material_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalMerek" data-type="Bahan" data-url="{{ path_for('admin-material') }}">Edit</button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" data-toggle="tooltip" data-placement="top" title="Untuk menambahkan daftar warna produk tekan tombol edit">
                                 <div class="col-sm-3">
                                     <label for="inputPassword3" class="control-label">Warna Produk</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control no-radius lightblack-border" name="product_color" placeholder="Black" tabindex="5" value="{{product_detail.product_color}}">
+                                    <div class="input-group">
+                                        <select class="form-control no-radius lightblack-border" name="product_color" placeholder="Black" tabindex="5">
+                                            {% for color in colors %}
+                                            <option value="{{color.color_id}}">{{color.color_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalMerek" data-type="Warna" data-url="{{ path_for('admin-color') }}">Edit</button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -73,7 +100,15 @@
                                     <label for="inputPassword3" class="control-label">Ukuran Produk</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control no-radius lightblack-border" name="product_size" placeholder="34-36" tabindex="6" value="{{product_detail.product_size}}">
+                                    <div class="input-group">
+                                        <select class="form-control no-radius lightblack-border" name="product_size_min" placeholder="Black" tabindex="5" id="min-size">
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button"> ~ </button>
+                                        </span>
+                                        <select class="form-control no-radius lightblack-border" name="product_size_max" placeholder="Black" tabindex="5" id="max-size">
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">

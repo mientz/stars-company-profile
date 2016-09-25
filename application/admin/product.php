@@ -6,13 +6,14 @@ $app->group('/admin/product', function () {
 
         $query = "
             select
-            p.product_brand, p.product_code, p.product_color, p.product_id, p.product_image,
-            p.product_ispopular, p.product_material, p.product_name, p.product_price, p.product_size,
+            b.brand_name, p.product_code, cl.color_name, p.product_id, p.product_image,
+            p.product_ispopular, m.material_name, p.product_name, p.product_price, p.product_size_min, p.product_size_max,
             p.product_view, GROUP_CONCAT(DISTINCT c.category_name SEPARATOR ', ') 'product_category'
             from
-            product p, product_category pc, category c
+            product p, product_category pc, category c, brand b, material m, color cl
             where
-            p.product_id=pc.product_id and c.category_id=pc.category_id
+            p.product_id=pc.product_id and c.category_id=pc.category_id and
+            p.material_id = m.material_id and b.brand_id=p.brand_id and cl.color_id=p.color_id
             ".($category != null ? "and c.category_id='".$category."'" : "")."
             ".(isset($_POST["search"]) ? "
             and p.product_name like CONCAT('%', '".$_POST["search"]."', '%') or
@@ -53,16 +54,16 @@ $app->group('/admin/product', function () {
 
         $query = "
             select
-                    p.product_brand, p.product_code, p.product_color, p.product_id, p.product_image,
-                    p.product_ispopular, p.product_material, p.product_name, p.product_price, p.product_size,
-                    p.product_view, GROUP_CONCAT(c.category_name SEPARATOR ', ') 'product_category_name',
-                    GROUP_CONCAT(c.category_id SEPARATOR ', ') 'product_category'
-                from
-                    product p, product_category pc, category c
-                where
-                    p.product_id=pc.product_id and c.category_id=pc.category_id  and
-                    p.product_id = '".$product_id."'
-                    group by p.product_id
+                p.brand_id, p.product_code, p.color_id, p.product_id, p.product_image,
+                p.product_ispopular, p.material_id, p.product_name, p.product_price, p.product_size_min, p.product_size_max,
+                p.product_view, GROUP_CONCAT(DISTINCT c.category_name SEPARATOR ', ') 'product_category'
+            from
+                product p, product_category pc, category c
+            where
+                p.product_id=pc.product_id and c.category_id=pc.category_id and
+                p.material_id = m.material_id and b.brand_id=p.brand_id and cl.color_id=p.color_id and
+                p.product_id = '".$product_id."'
+                group by p.product_id
             ";
         $select = $this->db->prepare($query);
         if($select->execute()){
@@ -140,6 +141,9 @@ $app->group('/admin/product', function () {
         return $this->view->render($res, 'admin/product-add.html', [
             'user_detail'=>$req->getAttribute('user_detail'),
             'categories'=>$req->getAttribute('categories'),
+            'brands'=>$this->db->query("select * from brand")->fetchAll(PDO::FETCH_ASSOC),
+            'materials'=>$this->db->query("select * from material")->fetchAll(PDO::FETCH_ASSOC),
+            'colors'=>$this->db->query("select * from color")->fetchAll(PDO::FETCH_ASSOC)
         ]);
     })->setName('admin-product-add')->add($select_category);
 
@@ -154,7 +158,8 @@ $app->group('/admin/product', function () {
                 $product_code = $_POST['product_code'];
                 $product_material = $_POST['product_material'];
                 $product_color = $_POST['product_color'];
-                $product_size = $_POST['product_size'];
+                $product_size_min = $_POST['product_size_min'];
+                $product_size_max = $_POST['product_size_max'];
                 $product_price = $_POST['product_price'];
                 $product_category_parent = $_POST['product_category_parent'];
                 $product_category_children = $_POST['product_category_children'];
@@ -168,14 +173,15 @@ $app->group('/admin/product', function () {
                 move_uploaded_file($sourcePath, $targetPath) ; // Moving Uploaded file
                 $insert = $this->db->prepare("
                 insert into product
-                values('', :product_code, :product_name, :product_brand, :product_material, :product_color, :product_size, :product_price,  '0', '0', :product_image)
+                values('', :product_code, :product_name, :product_brand, :product_material, :product_color, :product_size_min, :product_size_max, :product_price,  '0', '0', :product_image)
                 ");
                 $insert->bindParam(':product_name', $product_name, PDO::PARAM_STR);
                 $insert->bindParam(':product_code', $product_code, PDO::PARAM_INT);
-                $insert->bindParam(':product_brand', $product_brand, PDO::PARAM_STR);
-                $insert->bindParam(':product_material', $product_material, PDO::PARAM_STR);
-                $insert->bindParam(':product_color', $product_color, PDO::PARAM_STR);
-                $insert->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+                $insert->bindParam(':product_brand', $product_brand, PDO::PARAM_INT);
+                $insert->bindParam(':product_material', $product_material, PDO::PARAM_INT);
+                $insert->bindParam(':product_color', $product_color, PDO::PARAM_INT);
+                $insert->bindParam(':product_size_min', $product_size_min, PDO::PARAM_INT);
+                $insert->bindParam(':product_size_max', $product_size_max, PDO::PARAM_INT);
                 $insert->bindParam(':product_price', $product_price, PDO::PARAM_STR);
                 $insert->bindParam(':product_image', $file, PDO::PARAM_STR);
                 if($insert->execute()){
@@ -200,7 +206,10 @@ $app->group('/admin/product', function () {
         return $this->view->render($res, 'admin/product-edit.html', [
             'user_detail'=>$req->getAttribute('user_detail'),
             'categories'=>$req->getAttribute('categories'),
-            'product_detail'=>$req->getAttribute('product_detail')
+            'product_detail'=>$req->getAttribute('product_detail'),
+            'brands'=>$this->db->query("select * from brand")->fetchAll(PDO::FETCH_ASSOC),
+            'materials'=>$this->db->query("select * from material")->fetchAll(PDO::FETCH_ASSOC),
+            'colors'=>$this->db->query("select * from color")->fetchAll(PDO::FETCH_ASSOC)
         ]);
     })->setName('admin-product-edit')->add($detail_product)->add($select_category);
 
@@ -322,4 +331,130 @@ $app->group('/admin/product', function () {
                 ->write('Something went wrong!');
         }
     })->setName('admin-product-delete');
+
+    /*Master Helper*/
+
+//    for brand
+    $this->get('/brand', function ($req, $res, $args) {
+        $brand = $this->db->query("select brand_id 'id', brand_name 'name' from brand where deleted='0'")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($brand);
+    })->setName('admin-brand');
+
+    $this->post('/brand/add', function ($req, $res, $args) {
+        $name = $_POST['name'];
+        $insert = $this->db->prepare("
+                insert into
+                brand(brand_name, deleted)
+                values (:brand_name, '0')
+                ");
+        $insert->bindParam(':brand_name', $name, PDO::PARAM_STR);
+        $insert->execute();
+    })->setName('admin-brand-add');
+
+    $this->post('/brand/edit', function ($req, $res, $args) {
+        $name = $_POST['name'];
+        $id = $_POST['id'];
+        $insert = $this->db->prepare("
+                update brand
+                set brand_name = :brand_name
+                where brand_id = :id
+                ");
+        $insert->bindParam(':brand_name', $name, PDO::PARAM_STR);
+        $insert->bindParam(':id', $id, PDO::PARAM_INT);
+        $insert->execute();
+    })->setName('admin-brand-edit');
+
+    $this->post('/brand/delete', function ($req, $res, $args) {
+        $id = $_POST['id'];
+        $insert = $this->db->prepare("
+                update brand
+                set deleted = '1'
+                where brand_id = :id
+                ");
+        $insert->bindParam(':id', $id, PDO::PARAM_INT);
+        $insert->execute();
+    })->setName('admin-brand-delete');
+
+//    for material
+    $this->get('/material', function ($req, $res, $args) {
+        $brand = $this->db->query("select material_id 'id', material_name 'name' from material where deleted='0'")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($brand);
+    })->setName('admin-material');
+
+    $this->post('/material/add', function ($req, $res, $args) {
+        $name = $_POST['name'];
+        $insert = $this->db->prepare("
+                insert into
+                material(material_name, deleted)
+                values (:material_name, '0')
+                ");
+        $insert->bindParam(':material_name', $name, PDO::PARAM_STR);
+        $insert->execute();
+    })->setName('admin-material-add');
+
+    $this->post('/material/edit', function ($req, $res, $args) {
+        $name = $_POST['name'];
+        $id = $_POST['id'];
+        $insert = $this->db->prepare("
+                update material
+                set material_name = :material_name
+                where material_id = :id
+                ");
+        $insert->bindParam(':material_name', $name, PDO::PARAM_STR);
+        $insert->bindParam(':id', $id, PDO::PARAM_INT);
+        $insert->execute();
+    })->setName('admin-brand-edit');
+
+    $this->post('/material/delete', function ($req, $res, $args) {
+        $id = $_POST['id'];
+        $insert = $this->db->prepare("
+                update material
+                set deleted = '1'
+                where material_id = :id
+                ");
+        $insert->bindParam(':id', $id, PDO::PARAM_INT);
+        $insert->execute();
+    })->setName('admin-material-delete');
+
+//    for color
+    $this->get('/color', function ($req, $res, $args) {
+        $brand = $this->db->query("select color_id 'id', color_name 'name' from color where deleted='0'")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($brand);
+    })->setName('admin-color');
+
+    $this->post('/color/add', function ($req, $res, $args) {
+        $name = $_POST['name'];
+        $insert = $this->db->prepare("
+                insert into
+                color(color_name, deleted)
+                values (:color_name, '0')
+                ");
+        $insert->bindParam(':color_name', $name, PDO::PARAM_STR);
+        $insert->execute();
+    })->setName('admin-color-add');
+
+    $this->post('/color/edit', function ($req, $res, $args) {
+        $name = $_POST['name'];
+        $id = $_POST['id'];
+        $insert = $this->db->prepare("
+                update color
+                set color_name = :color_name
+                where color_id = :id
+                ");
+        $insert->bindParam(':color_name', $name, PDO::PARAM_STR);
+        $insert->bindParam(':id', $id, PDO::PARAM_INT);
+        $insert->execute();
+    })->setName('admin-color-edit');
+
+    $this->post('/color/delete', function ($req, $res, $args) {
+        $id = $_POST['id'];
+        $insert = $this->db->prepare("
+                update color
+                set deleted = '1'
+                where color_id = :id
+                ");
+        $insert->bindParam(':id', $id, PDO::PARAM_INT);
+        $insert->execute();
+    })->setName('admin-color-delete');
+
 })->add($user_detail);

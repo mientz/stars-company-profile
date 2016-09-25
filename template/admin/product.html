@@ -29,6 +29,12 @@
                         <div style="float:left; padding-right:10px;">
                             <div class="btn-group btn-group-sm btn-short-by">
                                 <a class="btn btn-primary" href="{{ path_for('admin-product-add') }}"> Tambah Produk</a>
+                                <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Daftar Merek</a></li>
+                                    <li><a href="#">Daftar Bahan</a></li>
+                                    <li><a href="#">Daftar Warna</a></li>
+                                </ul>
                             </div>
                         </div>
                         <div style="width:100%;" class="">
@@ -71,14 +77,14 @@
                                         <div class="col-md-6" style="height:110px;">
                                             <h4 class="media-heading text-uppercase"><b>{{product.product_name}}</b></h4>
                                             <h5 class="media-heading">{{product.product_code}}</h5>
-                                            <h5 class="media-heading"><b>{{product.product_brand}}</b></h5>
+                                            <h5 class="media-heading"><b>{{product.brand_name}}</b></h5>
                                             <h5 class="media-heading"><i class="mdi mdi-star" {% if product.product_ispopular %}style="color:gold;"{% endif %}></i></h5>
                                             <h5 style="position: absolute;bottom: 0;word-wrap: break-word;"><b>Rp. {{product.product_price}},-</b></h5>
                                         </div>
                                         <div class="col-md-4 text-right" style="height:130px;">
-                                            <h5 class="media-heading">{{product.product_material}} <i class="mdi mdi-format-list-bulleted"></i></h5>
-                                            <h5 class="media-heading">{{product.product_color}} <i class="mdi mdi-invert-colors"></i></h5>
-                                            <h5 class="media-heading">{{product.product_size}} <i class="mdi mdi-move-resize-variant"></i></h5>
+                                            <h5 class="media-heading">{{product.material_name}} <i class="mdi mdi-format-list-bulleted"></i></h5>
+                                            <h5 class="media-heading">{{product.color_name}} <i class="mdi mdi-invert-colors"></i></h5>
+                                            <h5 class="media-heading">{{product.product_size_min}} - {{product.product_size_max}} <i class="mdi mdi-move-resize-variant"></i></h5>
                                             <h5 class="media-heading">{{product.product_category}} <i class="mdi mdi-marker-check text-success"></i></h5>
                                             <h5 class="media-heading">{{product.product_view}} <i class="mdi mdi-eye"></i></h5>
                                         </div>

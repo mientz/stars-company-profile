@@ -52,11 +52,13 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <select class="form-control" class="form-control no-radius lightblack-border" name="product_brand" placeholder="KINGSTAR" tabindex="3">
-                                            <option>1</option>
+                                        <select class="form-control no-radius lightblack-border" name="product_brand" placeholder="KINGSTAR" tabindex="3">
+                                            {% for brand in brands %}
+                                            <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+                                            {% endfor %}
                                         </select>
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">Edit</button>
+                                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalMerek" data-type="Merek" data-url="{{ path_for('admin-brand') }}">Edit</button>
                                         </span>
                                     </div>
                                 </div>
@@ -67,11 +69,13 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <select class="form-control" class="form-control no-radius lightblack-border" name="product_material" placeholder="Karet Sintetis" tabindex="4">
-                                            <option>1</option>
+                                        <select class="form-control no-radius lightblack-border" name="product_material" placeholder="Karet Sintetis" tabindex="4">
+                                            {% for material in materials %}
+                                            <option value="{{material.material_id}}">{{material.material_name}}</option>
+                                            {% endfor %}
                                         </select>
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">Edit</button>
+                                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalMerek" data-type="Bahan" data-url="{{ path_for('admin-material') }}">Edit</button>
                                         </span>
                                     </div>
                                 </div>
@@ -82,11 +86,13 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <select class="form-control" class="form-control no-radius lightblack-border" name="product_color" placeholder="Black" tabindex="5">
-                                            <option>1</option>
+                                        <select class="form-control no-radius lightblack-border" name="product_color" placeholder="Black" tabindex="5">
+                                            {% for color in colors %}
+                                            <option value="{{color.color_id}}">{{color.color_name}}</option>
+                                            {% endfor %}
                                         </select>
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">Edit</button>
+                                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalMerek" data-type="Warna" data-url="{{ path_for('admin-color') }}">Edit</button>
                                         </span>
                                     </div>
                                 </div>
@@ -96,7 +102,15 @@
                                     <label for="inputPassword3" class="control-label">Ukuran Produk</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control no-radius lightblack-border" name="product_size" placeholder="34-36" tabindex="6">
+                                    <div class="input-group">
+                                        <select class="form-control no-radius lightblack-border" name="product_size_min" placeholder="Black" tabindex="5" id="min-size">
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button"> ~ </button>
+                                        </span>
+                                        <select class="form-control no-radius lightblack-border" name="product_size_max" placeholder="Black" tabindex="5" id="max-size">
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -144,9 +158,45 @@
         </div>
     </div>
 </div>
+<!--modal merek-->
+<div class="modal fade" id="modalMerek" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Daftar Merek</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th class="th-title">Nama Merek</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="data">
+                        <!--tempat daftar merek-->
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><input type="text" class="form-control brand-name" placeholder="Nama Merek"></th>
+                            <th><a class="btn btn-primary btn-xs brand-add"><i class="mdi mdi-plus"></i> Tambah</a></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 {% block js %}
 {{ parent() }}
+
 <script>
     $(function () {
         var $affixElement = $('div[data-spy="affix"]');
@@ -178,6 +228,134 @@
                 reader.readAsDataURL(img.files[0]);
             }
         }
+    }
+
+    for ($i=46; $i>15; $i--){
+        $('#min-size').append(
+            '<option value="' + $i + '">' + $i + '</option>'
+        )
+    }
+    $('#min-size').on('focusin', function(){
+        $('#max-size').html("");
+        $('#max-size').val("");
+    })
+    $('#min-size').on('focusout', function(){
+        for ($i=46; $i>=$(this).val(); $i--){
+            $('#max-size').append(
+                '<option value="' + $i + '">' + $i + '</option>'
+            )
+        }
+    })
+
+    $('#modalMerek').on('shown.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        var modal = $(this)
+        modal.find('.modal-title').html("Daftar " + button.data('type'))
+        modal.find('.th-title').html("Nama " + button.data('type'))
+        modal.find('.brand-name').attr('placeholder', "Nama " + button.data('type'))
+        url = button.data("url")
+        modal.find('.brand-add').on('click', function(){
+            $.post(url+'/add', {
+                name : modal.find('.brand-name').val()
+            }, function(data){
+                list();
+                modal.find('.brand-name').val("");
+            });
+        });
+        list = function(){
+            $.getJSON(url, function(data){
+                $i = 1;
+                modal.find('.data').html('');
+                $.each(data, function(x, val){
+                    $htmlnya = '<tr>' +
+                        '<td class="number">'+ $i++ +'</td>' +
+                        '<td class="name">'+ val.name +'</td>' +
+                        '<td class="btn-save">' +
+                        '<a class="btn btn-success btn-xs brand-edit" onclick="editThis(this, \''+ val.id +'\', \''+ val.name +'\', \''+url+'/edit\');"><i class="mdi mdi-pencil"></i></a>' +
+                        '<a class="btn btn-danger btn-xs" onclick="deleteThis(this, \''+ val.id +'\', \''+ val.name +'\', \''+url+'/delete\');"><i class="mdi mdi-delete"></i></a>' +
+                        '</td>' +
+                        '</tr>';
+                    modal.find('.data').append($htmlnya);
+                })
+            });
+        }
+        list();
+        modal.find('.modal-body input').val(recipient);
+    })
+
+    $('#modalMerek').on('hidden.bs.modal', function (e) {
+        location.reload();
+    })
+
+    function editThis(selector, id, value, url){
+        $this = $(selector);
+        $parent_td = $this.parent();
+        $parent_tr = $parent_td.parent();
+        $parent_tr.find('.name').html('<input type="text" class="form-control edit-name" placeholder="Nama Merek" value="'+ value +'">');
+        $parent_td.html(
+            '<a class="btn btn-success btn-xs brand-edit" onclick="saveThis(this, \''+ id +'\', \''+ value +'\', \''+ url +'\');">Simpan</a>'+
+            '<a class="btn btn-danger btn-xs" onclick="cancelThis(this, \''+ id +'\', \''+ value +'\', \''+ url +'\');">Batal</a>'
+        );
+
+        $parent_tr.find('.edit-name').on('keyup', function(){
+            $parent_td.html(
+                '<a class="btn btn-success btn-xs brand-edit" onclick="saveThis(this, \''+ id +'\', \''+ $(this).val() +'\', \''+ url +'\');">Simpan</a>'+
+                '<a class="btn btn-danger btn-xs" onclick="cancelThis(this, \''+ id +'\', \''+ value +'\', \''+ url +'\');">Batal</a>'
+            );
+        })
+    };
+
+    function saveThis(selector, id, value, url){
+        $.post('admin/product/brand/edit', {
+            name : value,
+            id : id
+        }, function(data){
+            $this = $(selector);
+            $parent_td = $this.parent();
+            $parent_tr = $parent_td.parent();
+            $parent_tr.find('.name').html(value);
+            $parent_td.html(
+                '<a class="btn btn-success btn-xs brand-edit" onclick="editThis(this, \''+ id +'\', \''+ value +'\', \''+ url +'\');"><i class="mdi mdi-pencil"></i></a>'+
+                '<a class="btn btn-danger btn-xs" onclick="deleteThis(this, \''+ id +'\', \''+ value +'\', \''+ url +'\');"><i class="mdi mdi-delete"></i></a>'
+            );
+        });
+    }
+
+    function cancelThis(selector, id, value, url){
+        $this = $(selector);
+        $parent_td = $this.parent();
+        $parent_tr = $parent_td.parent();
+        $parent_tr.find('.name').html(value);
+        $parent_td.html(
+            '<a class="btn btn-success btn-xs brand-edit" onclick="editThis(this, \''+ id +'\', \''+ value +'\', \''+ url +'\');"><i class="mdi mdi-pencil"></i></a>'+
+            '<a class="btn btn-danger btn-xs" onclick="deleteThis(this, \''+ id +'\', \''+ value +'\', \''+ url +'\');"><i class="mdi mdi-delete"></i></a>'
+        );
+    }
+
+    function deleteThis(selector, id, value, url){
+        $this = $(selector);
+        $parent_td = $this.parent();
+        $parent_tr = $parent_td.parent();
+        $parent_tr.find('.name').html('<b id="hapusdah" class="text-danger" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Konfirmasi Penghapusan" data-content="Apakah anda yakin ingin menghapus data ini?">'+ value +'</b>');
+        $('#hapusdah').popover('show')
+        $parent_td.html(
+            '<a class="btn btn-danger btn-xs brand-edit" onclick="yesDeleteThis(this, \''+ id +'\', \''+ value +'\', \''+ url +'\');">YA</a>'+
+            '<a class="btn btn-primary btn-xs" onclick="cancelThis(this, \''+ id +'\', \''+ value +'\', \''+ url +'\');">Batal</a>'
+        );
+    };
+
+
+    function yesDeleteThis(selector, id, value, url){
+        $.post('admin/product/brand/delete', {
+            name : value,
+            id : id
+        }, function(data){
+            $this = $(selector);
+            $parent_td = $this.parent();
+            $parent_tr = $parent_td.parent();
+            $parent_tr.remove();
+        });
     }
 </script>
 {% endblock %}

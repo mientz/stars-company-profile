@@ -5,7 +5,7 @@ return [
         'determineRouteBeforeAppMiddleware' => true,
         "database" => [
             "host" => "localhost",
-            "database_name" => "kpstars",
+            "database_name" => "starsv3",
             "user" => "root",
             "pass" => ""
         ],
