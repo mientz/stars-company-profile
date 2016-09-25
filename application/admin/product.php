@@ -56,12 +56,11 @@ $app->group('/admin/product', function () {
             select
                 p.brand_id, p.product_code, p.color_id, p.product_id, p.product_image,
                 p.product_ispopular, p.material_id, p.product_name, p.product_price, p.product_size_min, p.product_size_max,
-                p.product_view, GROUP_CONCAT(DISTINCT c.category_name SEPARATOR ', ') 'product_category'
+                p.product_view, GROUP_CONCAT(DISTINCT pc.category_id SEPARATOR ', ') 'product_category'
             from
                 product p, product_category pc, category c
             where
                 p.product_id=pc.product_id and c.category_id=pc.category_id and
-                p.material_id = m.material_id and b.brand_id=p.brand_id and cl.color_id=p.color_id and
                 p.product_id = '".$product_id."'
                 group by p.product_id
             ";
@@ -223,7 +222,8 @@ $app->group('/admin/product', function () {
         $product_code = $_POST['product_code'];
         $product_material = $_POST['product_material'];
         $product_color = $_POST['product_color'];
-        $product_size = $_POST['product_size'];
+        $product_size_min = $_POST['product_size_min'];
+        $product_size_max = $_POST['product_size_max'];
         $product_price = $_POST['product_price'];
         $product_category_parent = $_POST['product_category_parent'];
         $product_category_children = $_POST['product_category_children'];
@@ -244,10 +244,11 @@ $app->group('/admin/product', function () {
                 set
                     product_code=:product_code,
                     product_name=:product_name,
-                    product_brand=:product_brand,
-                    product_material=:product_material,
-                    product_color=:product_color,
-                    product_size=:product_size,
+                    brand_id=:product_brand,
+                    material_id=:product_material,
+                    color_id=:product_color,
+                    product_size_min=:product_size_min,
+                    product_size_max=:product_size_max,
                     product_price=:product_price,
                     product_ispopular=:product_ispopular,
                     product_image=:product_image
@@ -261,7 +262,8 @@ $app->group('/admin/product', function () {
                 $insert->bindParam(':product_brand', $product_brand, PDO::PARAM_STR);
                 $insert->bindParam(':product_material', $product_material, PDO::PARAM_STR);
                 $insert->bindParam(':product_color', $product_color, PDO::PARAM_STR);
-                $insert->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+                $insert->bindParam(':product_size_min', $product_size_min, PDO::PARAM_INT);
+                $insert->bindParam(':product_size_max', $product_size_max, PDO::PARAM_INT);
                 $insert->bindParam(':product_price', $product_price, PDO::PARAM_STR);
                 $insert->bindParam(':product_image', $file, PDO::PARAM_STR);
                 $insert->bindParam(':product_ispopular', $product_ispopular, PDO::PARAM_INT);
@@ -283,10 +285,11 @@ $app->group('/admin/product', function () {
                 set
                     product_code=:product_code,
                     product_name=:product_name,
-                    product_brand=:product_brand,
-                    product_material=:product_material,
-                    product_color=:product_color,
-                    product_size=:product_size,
+                    brand_id=:product_brand,
+                    material_id=:product_material,
+                    color_id=:product_color,
+                    product_size_min=:product_size_min,
+                    product_size_max=:product_size_max,
                     product_price=:product_price,
                     product_ispopular=:product_ispopular
 
@@ -299,7 +302,8 @@ $app->group('/admin/product', function () {
             $insert->bindParam(':product_brand', $product_brand, PDO::PARAM_STR);
             $insert->bindParam(':product_material', $product_material, PDO::PARAM_STR);
             $insert->bindParam(':product_color', $product_color, PDO::PARAM_STR);
-            $insert->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $insert->bindParam(':product_size_min', $product_size_min, PDO::PARAM_INT);
+            $insert->bindParam(':product_size_max', $product_size_max, PDO::PARAM_INT);
             $insert->bindParam(':product_price', $product_price, PDO::PARAM_STR);
             $insert->bindParam(':product_ispopular', $product_ispopular, PDO::PARAM_INT);
             if($insert->execute()){

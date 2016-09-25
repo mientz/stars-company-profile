@@ -21,7 +21,7 @@
                     <a href="{{ path_for('admin-gallery') }}" class="list-group-item {% if active == 'gallery' %} active {% endif %}">
                         Gallery
                     </a>
-                    {% if user_detail.permission == 'admin' %}
+                    {% if user_detail.permission == 'Admin Web' %}
                     <a href="{{ path_for('admin-users') }}" class="list-group-item {% if active == 'user' %} active {% endif %}">
                         Pengguna
                     </a>

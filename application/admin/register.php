@@ -20,7 +20,7 @@ $app->group('/admin/register', function () {
             $insert = $this->db->prepare(
                 "insert into
                 user(username, password, email, fullname, image, activated, permission, last_login)
-                values(:username, :password, :email, :real_name, 'no-photo.png', '1', 'member', :last_login)"
+                values(:username, :password, :email, :real_name, 'no-photo.png', '1', 'Staff Periklanan', :last_login)"
             );
             $insert->bindParam(':username', $username, PDO::PARAM_STR);
             $insert->bindParam(':password', $md5pass, PDO::PARAM_STR);
