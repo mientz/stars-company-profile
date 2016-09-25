@@ -9,6 +9,17 @@ $app->get('/admin', function ($req, $res, $args) {
     ]);
 })->setName('admin-login');
 
+$app->get('/admin/error', function ($req, $res, $args) {
+    if(isset($this->session->user_id)){
+        return $res->withStatus(302)->withHeader('Location', $this->router->pathFor('admin-product'));
+    }
+    $select = $this->db->query("select * from user")->fetchAll(PDO::FETCH_ASSOC);
+    return $this->view->render($res, 'admin/login.html', [
+        'users' => $select,
+        'error' => true
+    ]);
+})->setName('admin-login');
+
 $app->post('/admin', function ($req, $res, $args) {
     $select = $this->db->prepare("select * from user where password=:password and (username=:username or email=:email) group by user_id");
     $select->bindParam(':username', $_POST["username"], PDO::PARAM_STR);
