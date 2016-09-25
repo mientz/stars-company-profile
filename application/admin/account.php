@@ -30,6 +30,17 @@ $app->group('/admin/account', function () {
         }
         if(isset($_POST["fullname"])){
             $this->db->exec("update user set fullname='".$_POST["fullname"]."' where user_id='".$this->session->user_id."'");
+            if(isset($_FILES["profile_image"]) && $_FILES['profile_image']['tmp_name'] != ""){
+                if ($_FILES["profile_image"]["type"] == "image/bmp" || $_FILES["profile_image"]["type"] == "image/png" || $_FILES["profile_image"]["type"] == "image/jpeg"){
+                    $ext = end((explode(".", $_FILES['profile_image']['name'])));
+                    $sourcePath = $_FILES['profile_image']['tmp_name'];
+                    $file = mb_ereg_replace("([^\w\s\d\-_~,;\[\]\(\).])", '', $this->db->query("select username from user where user_id='".$this->session->user_id."'")->fetchColumn());
+                    $file = 'profile-'.$file."-".date("-Y-m-d-H-i-s-").'.'.$ext;
+                    $targetPath = "public/data/user/".$file; // Target path where file is to be stored
+                    move_uploaded_file($sourcePath, $targetPath) ; // Moving Uploaded file
+                    $this->db->exec("update user set image='".$file."' where user_id='".$this->session->user_id."'");
+                }
+            }
             return $this->view->render($res, 'admin/account.html', [
                 'user_detail'=>$this->db->query("select * from user where user_id='".$this->session->user_id."'")->fetch(PDO::FETCH_ASSOC),
                 'success_save'=>"Perubahan berhasil disimpan"
